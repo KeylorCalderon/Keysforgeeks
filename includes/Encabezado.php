@@ -13,7 +13,7 @@
 </head>
 
 <header>
-    <a href="index.html"><img width="200px" src="img/logo.jpg" alt="logo"></a>
+    <a href="index.php"><img width="200px" src="img/logo.jpg" alt="logo"></a>
 
         <div class="buscador">
                 <input type="text" name="search" placeholder="Buscar..." class="src" autocomplete="off">
