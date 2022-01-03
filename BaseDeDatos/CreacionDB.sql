@@ -10,8 +10,7 @@ CREATE TABLE Videojuego(ID INT PRIMARY KEY AUTO_INCREMENT,
 						codigo VARCHAR(20),
                         plataformaID INT,
                         precio FLOAT,
-                        imagen BLOB,
-						telefono INT,
+                        imagen MEDIUMBLOB,
 						descripcion VARCHAR(250),
                         FOREIGN KEY (plataformaID) REFERENCES Plataforma (ID));
                         
