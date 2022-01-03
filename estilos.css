@@ -623,7 +623,7 @@ textarea.textarea-descripcion{
 }
 
 .selecionador{
-    margin: 25px;
+    margin: 40px;
     display: flex;
     flex-direction: row;
 }
@@ -636,6 +636,7 @@ textarea.textarea-descripcion{
     border-color: transparent;
     color: #000;
     width: 120px;
+    height: 14px;
 }
 
 
@@ -672,5 +673,5 @@ thead{
 }
 
 .img-buscar-trans{
-    width: 100px;
+  margin-left: 10px;
 }
