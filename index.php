@@ -27,6 +27,18 @@
                 <a href="plantilla-administrativa.php">Sección administrativa</a>
                 <a href="pagina_Compra.php">Compra y facturación</a>
             </nav> 
+            <?php
+                include "includes/Conexion.php";
+                include "includes/DatosPrueba.php";
+                $conn=conectar();
+
+                $imagen=$_FILES['/img/Producto_AHiT.png']['tmp_name'];
+                echo $imagen;
+
+                //borrarBD($conn);
+                //crearBD($conn);
+                //cargarDatos($conn);
+            ?>
         </main>
 
     </div>

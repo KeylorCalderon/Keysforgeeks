@@ -1,4 +1,4 @@
-CREATE DATABASE keysforgeeks_DB;
+#CREATE DATABASE keysforgeeks_DB;
 
 USE keysforgeeks_DB;
 
@@ -15,7 +15,8 @@ CREATE TABLE Videojuego(ID INT PRIMARY KEY AUTO_INCREMENT,
                         FOREIGN KEY (plataformaID) REFERENCES Plataforma (ID));
                         
 CREATE TABLE Promocion(ID INT PRIMARY KEY AUTO_INCREMENT,
-						rebaja FLOAT);
+						rebaja FLOAT,
+                        imagen MEDIUMBLOB);
                         
 CREATE TABLE PromocionXVideojuego(ID INT PRIMARY KEY AUTO_INCREMENT,
 								promocionID INT,
@@ -36,6 +37,7 @@ CREATE TABLE GeneroXVideojuego(ID INT PRIMARY KEY AUTO_INCREMENT,
 CREATE TABLE Descuento(ID INT PRIMARY KEY AUTO_INCREMENT,
 						videojuegoID INT,
                         descuento FLOAT,
+                        imagen MEDIUMBLOB,
                         FOREIGN KEY (videojuegoID) REFERENCES Videojuego (ID));
                         
 CREATE TABLE Usuario(ID INT PRIMARY KEY AUTO_INCREMENT,
