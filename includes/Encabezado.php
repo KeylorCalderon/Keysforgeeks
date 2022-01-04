@@ -21,7 +21,7 @@
         </div>  
 
         <div class="botones-header">
-            <a href="./" class="header-icon">
+            <a href="Logueo.php" class="header-icon">
                 <i class='bx bxs-user'></i>
             </a>
             <a href="./" class="header-icon">

@@ -1,5 +1,9 @@
 <?php
 
+function cerrar($conn){
+    mysqli_close($conn);
+}
+
 function conectar(){
     
     $servername = "localhost";
@@ -9,7 +13,6 @@ function conectar(){
     $username = "usuario";
     $password = "1234";
 
-    // Create connection
     $conn = mysqli_connect($servername, $username, $password, $database);
     if(!$conn)
     {
