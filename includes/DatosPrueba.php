@@ -64,8 +64,9 @@ function crearBD($conn){
         plataformaID INT,
         precio FLOAT,
         imagen VARCHAR(50),
-        descripcion VARCHAR(250),
+        descripcion VARCHAR(1500),
         FOREIGN KEY (plataformaID) REFERENCES Plataforma (ID));" ;
+        
         $conn->query($sql);
 
         $sql= "CREATE TABLE Promocion(ID INT PRIMARY KEY AUTO_INCREMENT,
@@ -139,7 +140,7 @@ function crearBD($conn){
         $sql= "CREATE TABLE Preguntas(ID INT PRIMARY KEY AUTO_INCREMENT,
         usuarioID INT,
         videojuegoID INT,
-        comentario VARCHAR(250),
+        comentario VARCHAR(1500),
         fecha DATE,
         estrellas INT,
         FOREIGN KEY (videojuegoID) REFERENCES Videojuego (ID),
@@ -149,7 +150,7 @@ function crearBD($conn){
         $sql= "CREATE TABLE Respuestas(ID INT PRIMARY KEY AUTO_INCREMENT,
         usuarioID INT,
         preguntaID INT,
-        comentario VARCHAR(250),
+        comentario VARCHAR(1500),
         fecha DATE,
         FOREIGN KEY (preguntaID) REFERENCES Preguntas (ID),
         FOREIGN KEY (usuarioID) REFERENCES Usuario (ID));" ;
@@ -205,6 +206,7 @@ function cargarDatos($conn){
                 ('Uncharted 4', 'mdad2391', 4, 19950.95, 'img/Producto_Uncharted4.jpg', '3 años después de UNCHARTED 3, Nathan Drake se retiró del mundo de los cazafortunas. Pero, el destino no tarda en golpear su puerta cuando su hermano Sam reaparece en busca de ayuda para salvar su propia vida, una aventura demasiado tentadora e irresistible para Drake.'),
                 ('Uncharted 4', 'remastered2391', 5, 39950.95, 'img/Producto_Uncharted4.jpg', '3 años después de UNCHARTED 3, Nathan Drake se retiró del mundo de los cazafortunas. Pero, el destino no tarda en golpear su puerta cuando su hermano Sam reaparece en busca de ayuda para salvar su propia vida, una aventura demasiado tentadora e irresistible para Drake.')
                ;" ;
+
         $conn->query($sql);
 
         $sql = "INSERT INTO Promocion(rebaja, imagen)
@@ -251,6 +253,7 @@ function cargarDatos($conn){
                 (7,19),
                 (8,20),
                 (8,21);";
+
         $conn->query($sql);
 
         $sql = "INSERT INTO Descuento(videojuegoID, descuento, imagen)

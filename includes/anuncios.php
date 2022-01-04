@@ -1,15 +1,23 @@
 
 <div class = "anuncio">
-    <?php
-    $banner['1'] ="<img class =\"imganuncio\" src=\"img/Anuncio1.jpg\">";
-    $banner['2'] ="<img class =\"imganuncio\" src=\"img/GTA.jpg\">";
-    $banner['3'] ="<img class =\"imganuncio\" src=\"img/Anuncio1.jpg\">";
-    $banner['4'] ="<img class =\"imganuncio\" src=\"img/GTA.jpg\">";
 
-    $randomisa = rand(1,4);
-    print $banner[$randomisa]; 
-    // <img class ="imganuncio" src="img/anu.jpg" alt="">   
-    ?>
+<?php
+
+    include "includes/Conexion.php";
+    $conn = conectar();
+
+    $sql = "SELECT * FROM Usuario";
+    $resultado = $conn -> query($sql);
+
+    if($resultado -> num_rows > 0){
+             while($row = $resultado->fetch_assoc()){
+                 echo '<br>';
+                 echo $row['contrasena'];
+             }
+     }
+
+?>
+
 </div>
 
 

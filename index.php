@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
+
 <?php
         include "includes/Encabezado.php";
 ?>
@@ -18,14 +20,12 @@
                 include "includes/Conexion.php";
                 include "includes/DatosPrueba.php";
                 $conn=conectar();
-
                 //$imagen=$_FILES['/img/Producto_AHiT.png']['tmp_name'];
                 //echo $imagen;
-
                 borrarBD($conn);
                 crearBD($conn);
                 cargarDatos($conn);
-            ?>
+            ?>        
         </main>
 
     </div>

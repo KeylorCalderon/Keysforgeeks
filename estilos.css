@@ -82,6 +82,7 @@ input.src{
 footer{
     background: black;
     padding-bottom: 0.1px;
+    position: relative;
 }
 
 .footer-content{
@@ -678,19 +679,51 @@ thead{
 }
 
 .anuncio{
-    display: block;
-    position: fixed;
+    margin-top: 5px;
+    position: absolute;
     width: 300px;
     height: 600px;
-    top: 110px;
     left: 0px;
+    background: red;
 }
 
 .imganuncio{
-    width: 250px;
+    width: 200px;
     height: 600px;
     border-radius: 10px;
 }
 
 
 
+
+.slider{
+    padding-top: 10px;
+    overflow: hidden;
+}
+
+.slider ul{
+    display: flex;
+    flex-direction: row;
+    width: 300%;
+    animation: cambio 20s infinite;
+}
+
+.slider ul img{
+    border-radius: 5px;
+    width: 100%;
+}
+
+.slider li{
+    width: 100%;
+}
+
+@keyframes cambio{
+    0%{ margin-left: 0;}
+    20%{ margin-left: 0;}
+
+    25%{margin-left: -100%;}
+    45%{margin-left: -100%;}
+
+    50%{margin-left: -200%;}
+    70%{margin-left: -200%;}
+}

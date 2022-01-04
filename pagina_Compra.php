@@ -6,6 +6,12 @@
 ?>
 
 <body>
+
+
+    <?php
+           include "includes/banner.php";
+    ?>
+
     <?php
             include "includes/anuncios.php";
     ?>

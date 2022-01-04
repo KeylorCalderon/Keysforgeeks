@@ -3,11 +3,12 @@
 function conectar(){
     
     $servername = "localhost";
-    $database = "keysforgeeks_DB";
-    $username = "root";
-    $password = "";
-    /*$username = "usuario";
-    $password = "1234";*/
+    $database = "keysforgeeks_db";
+    /*$username = "root";
+    $password = "";*/
+    $username = "usuario";
+    $password = "1234";
+
     // Create connection
     $conn = mysqli_connect($servername, $username, $password, $database);
     if(!$conn)
