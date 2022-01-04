@@ -1,9 +1,13 @@
 <?php
 
+function cerrar($conn){
+    mysqli_close($conn);
+}
+
 function conectar(){
     
     $servername = "localhost";
-    $database = "keysforgeeks_DB";
+    $database = "keysforgeeks_db";
     $username = "root";
     $password = "";
     /*$username = "usuario";

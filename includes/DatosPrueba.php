@@ -64,7 +64,7 @@ function crearBD($conn){
         plataformaID INT,
         precio FLOAT,
         imagen VARCHAR(50),
-        descripcion VARCHAR(250),
+        descripcion VARCHAR(1500),
         FOREIGN KEY (plataformaID) REFERENCES Plataforma (ID));" ;
         $conn->query($sql);
 
@@ -139,7 +139,7 @@ function crearBD($conn){
         $sql= "CREATE TABLE Preguntas(ID INT PRIMARY KEY AUTO_INCREMENT,
         usuarioID INT,
         videojuegoID INT,
-        comentario VARCHAR(250),
+        comentario VARCHAR(1500),
         fecha DATE,
         estrellas INT,
         FOREIGN KEY (videojuegoID) REFERENCES Videojuego (ID),
@@ -149,7 +149,7 @@ function crearBD($conn){
         $sql= "CREATE TABLE Respuestas(ID INT PRIMARY KEY AUTO_INCREMENT,
         usuarioID INT,
         preguntaID INT,
-        comentario VARCHAR(250),
+        comentario VARCHAR(1500),
         fecha DATE,
         FOREIGN KEY (preguntaID) REFERENCES Preguntas (ID),
         FOREIGN KEY (usuarioID) REFERENCES Usuario (ID));" ;
