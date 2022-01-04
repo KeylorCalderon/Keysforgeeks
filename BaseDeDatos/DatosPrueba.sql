@@ -16,7 +16,25 @@ VALUES ('A Hat in Time', '0001', 1, 11950.95, LOAD_FILE('/Producto_AHiT.PNG'), '
 	   ('A Hat in Time', '0001', 4, 11950.95, LOAD_FILE('/Producto_AHiT.PNG'), 'Un plataformas en 3D homenaje a los viejos clásicos. Su protagonista es una niña con sombrero, acompañala a explorar mundos inmensos y recoge fragmentos de tiempo para avanzar en la aventura.')
        ;
        
-SELECT * FROM Videojuego;   
+SELECT * FROM administrador;
+SELECT * FROM carrito; 
+SELECT * FROM carritoxvideojuego; 
+SELECT * FROM cliente; 
+SELECT * FROM descuento; 
+SELECT * FROM factura; 
+SELECT * FROM genero; 
+SELECT * FROM generoxvideojuego;
+SELECT * FROM plataforma; 
+SELECT * FROM preguntas; 
+SELECT * FROM promocion; 
+SELECT * FROM promocionxvideojuego;
+SELECT * FROM respuestas;
+SELECT * FROM usuario; 
+SELECT * FROM videojuego;  
+
+SHOW TABLES FROM keysforgeeks_DB;
+
+SELECT NOW();
 
 SELECT LOAD_FILE('C:\xampp\htdocs\ProyectoWeb\BaseDeDatos\Producto_AHiT.png');    
        

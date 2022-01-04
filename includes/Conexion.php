@@ -6,11 +6,14 @@ function conectar(){
     $database = "keysforgeeks_DB";
     $username = "root";
     $password = "";
+    /*$username = "usuario";
+    $password = "1234";*/
     // Create connection
     $conn = mysqli_connect($servername, $username, $password, $database);
     if(!$conn)
     {
         echo "<h3>No se ha podido conectar PHP - MySQL, verifique sus datos.</h3><hr><br>";
+        echo $conn->connect_errno;
     }
     else
     {
