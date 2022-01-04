@@ -8,6 +8,10 @@
 ?>
 
 <body>
+
+    <?php
+            include "includes/anuncios.php";
+    ?>
     <div class="wrapper">  
         <main>
             <style>
