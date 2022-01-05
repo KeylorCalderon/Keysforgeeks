@@ -712,6 +712,15 @@ thead{
   font-size: 17px;
 }
 
+.registro {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 75px;
+    font-size: 17px;
+  }
+
 
 .slider{
     background: red;
