@@ -5,7 +5,7 @@
         $correo = $_POST['username'];
         $contra = $_POST['password'];
 
-        $result=mysqli_query($connection, "SELECT * FROM usuario WHERE email='$correo' AND contrasena='$contra'"); 
+        $result=mysqli_query($connection, "SELECT * FROM Usuario, Cliente WHERE Usuario.email='$correo' AND Usuario.contrasena='$contra' AND Usuario.ID=Cliente.usuarioID"); 
                     
                     /*while($row=mysqli_fetch_assoc($result)){
                         echo $row["email"];
@@ -14,6 +14,8 @@
         if (!$row=mysqli_fetch_assoc($result)) {
             header("Location: Logueo.php?error=true");
         } else {
+            session_start();
+            $_SESSION['usuario']=$correo;
             header("Location: index.php");
         }
         mysqli_close($connection);
@@ -31,7 +33,7 @@
     <div class="administrativo">
         <form method="post" action="#" name="signin-form">
             <div class="logueo">
-                <label>Email </label>
+                <label>Usuario </label>
                 <input class="logueoCampo" type="text" name="username" pattern="[a-zA-Z0-9]+" required />
             </div>
             <div class="logueo">
@@ -46,7 +48,7 @@
             <div class="logueo">
                 <button type="submit" class="botonLogin" name="login" value="login">Loguearse</button>
             </div>
-            
+            <a href="Registro.php">Registrarse</a>
         </form>
     </div>
     <?php

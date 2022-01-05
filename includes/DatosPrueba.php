@@ -262,7 +262,7 @@ function cargarDatos($conn){
 
         $sql = "INSERT INTO Usuario(email, contrasena)
         VALUES  ('Prueba1','123'),
-                ('Prueba2','546'),
+                ('Prueba2','456'),
                 ('Prueba3','789'),
                 ('Admin','Admin123');";
         $conn->query($sql);

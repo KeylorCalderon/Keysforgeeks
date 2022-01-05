@@ -21,9 +21,16 @@
         </div>  
 
         <div class="botones-header">
-            <a href="Logueo.php" class="header-icon">
-                <i class='bx bxs-user'></i>
-            </a>
+            <?php
+                session_start();
+                if(@$_SESSION['usuario']==null || $_SESSION['usuario']==''){
+                    echo "<a href='Logueo.php' class='header-icon'>";
+                }else{
+                    echo "<a href='usuario.php' class='header-icon'>";    
+                }
+            ?>
+            <i class='bx bxs-user'></i>
+                    </a>"
             <a href="./" class="header-icon">
                 <i class='bx bxs-cart'></i>
             </a>
