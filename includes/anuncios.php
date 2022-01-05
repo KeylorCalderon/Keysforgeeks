@@ -1,23 +1,24 @@
 
 <div class = "anuncio">
-
 <?php
-
-    include "includes/Conexion.php";
     $conn = conectar();
-
-    $sql = "SELECT * FROM Usuario";
-    $resultado = $conn -> query($sql);
-
+    $sql = "SELECT * FROM Descuento";
+    $resultado = $conn->query($sql);
+    $query = mysqli_query($conn, $sql);
+    $count = mysqli_num_rows($query);
+    $randomisa = rand(1,$count);
     if($resultado -> num_rows > 0){
+        $img = "";
              while($row = $resultado->fetch_assoc()){
-                 echo '<br>';
-                 echo $row['contrasena'];
-             }
-     }
-
+              if($randomisa == $row['ID']){
+                $img = $row['imagen'];
+              } 
+             } 
 ?>
-
+            <img class= "imganuncio" src="<?php echo $img; ?>" >   
+<?php         
+     }
+     cerrar($conn);
+?>
 </div>
-
 

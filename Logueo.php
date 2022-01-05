@@ -5,7 +5,7 @@
         $correo = $_POST['username'];
         $contra = $_POST['password'];
 
-        $result=mysqli_query($connection, "SELECT * FROM usuario WHERE email='$correo' AND contrasena='$contra'"); 
+        $result=mysqli_query($connection, "SELECT * FROM Usuario WHERE email='$correo' AND contrasena='$contra'"); 
                     
                     /*while($row=mysqli_fetch_assoc($result)){
                         echo $row["email"];
