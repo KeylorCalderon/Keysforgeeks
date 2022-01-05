@@ -210,7 +210,7 @@ function cargarDatos($conn){
         $conn->query($sql);
 
         $sql = "INSERT INTO Promocion(rebaja, imagen)
-        VALUES  (25.0, 'img/Banner1.jpg');";
+        VALUES  (25.0, 'img/Banner1.jpg'), (30.0, 'img/Banner2.jpg') ;";
         $conn->query($sql);
 
         $sql = "INSERT INTO PromocionXVideojuego(promocionID, videojuegoID)
@@ -257,7 +257,7 @@ function cargarDatos($conn){
         $conn->query($sql);
 
         $sql = "INSERT INTO Descuento(videojuegoID, descuento, imagen)
-        VALUES  (20, 35.0, 'img/Anuncio1.jpg');";
+        VALUES  (20, 35.0, 'img/Anuncio1.jpg'),  (10, 40.0, 'img/Anuncio2.jpg');";
         $conn->query($sql);
 
         $sql = "INSERT INTO Usuario(email, contrasena)
