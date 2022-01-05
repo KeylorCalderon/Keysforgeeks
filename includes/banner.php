@@ -1,6 +1,5 @@
 <div class ="slider">
 <?php
-    include "includes/Conexion.php";
     $conn = conectar();
 ?>
         <ul>

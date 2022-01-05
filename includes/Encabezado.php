@@ -35,4 +35,7 @@
                 <i class='bx bxs-cart'></i>
             </a>
         </div>
+<?php
+  include "includes/Conexion.php";
+?>
 </header>
