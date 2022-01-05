@@ -14,8 +14,7 @@ html, body{
 }
 
 .wrapper{
-    min-height: calc(100%);
-    
+    min-height:calc(100%);
 }
 
 .menu-paginas{
@@ -507,7 +506,7 @@ button.btn-pagar{
     border-color: transparent;
     color: #000;
     width: 300px;
-    background: #fff url("/img/search-icon.png") no-repeat 100% center ;
+    background: #fff url("img/search-icon.png") no-repeat 100% center ;
 }
 
 .text{
@@ -757,4 +756,78 @@ thead{
 .logueoCampo {
     border-radius: 5px;
     margin: 13px;
+}
+
+
+.contacto{ 
+    display: block;
+    width: 40%;
+    overflow: hidden;
+    margin: auto;
+    background: rgb(168, 168, 168);
+    padding: 15px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+.cont-contacto{
+    border-radius: 5px;
+    background: grey;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 17px;
+}
+
+.input-user{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 5px 32px 5px 10px;
+    outline: none;
+    font-size: 12px;
+    border-radius: 5px;
+    border-color: transparent;
+    color: #000;
+    width: 100px;
+
+}
+
+.input-email{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 5px 32px 5px 10px;
+    outline: none;
+    font-size: 12px;
+    border-radius: 5px;
+    border-color: transparent;
+    color: #000;
+    width: 100px;
+}
+
+.textarea-mensaje{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 5px 32px 5px 10px;
+    outline: none;
+    font-size: 12px;
+    border-radius: 5px;
+    border-color: transparent;
+    color: #000;
+    width: 190px;
+    height: 150px;
+}
+
+
+.btn-enviar{
+    padding: 5px 10px 5px 10px;
+    font-size: 12px;
+    border-radius: 5px;
+    border-color: transparent;
+    color: #000;
+    cursor: pointer;
+    background: #ffed00;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
+
 }

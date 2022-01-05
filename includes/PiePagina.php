@@ -15,6 +15,9 @@
                 <a href="./" class="social-meida-icon">
                     <i class='bx bxl-twitter'></i>
                 </a>
+                <a href="Contacto.php" class="social-meida-icon">
+                    <i class='bx bxs-contact'></i>
+                </a>
             </div>
         </div>
         <div class="line"></div>
