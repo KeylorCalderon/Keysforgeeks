@@ -23,8 +23,8 @@
                 //echo $imagen;
 
                 //borrarBD($conn);
-               // crearBD($conn);
-               // cargarDatos($conn);
+                //crearBD($conn);
+                //cargarDatos($conn);
                 cerrar($conn);
             ?>
         </main>

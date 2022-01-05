@@ -368,7 +368,7 @@ button.btn-pagar{
     vertical-align: middle;
 }
 
-#galeria {
+.galeria {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -379,6 +379,12 @@ button.btn-pagar{
 .imgProducto {
     height: 150px;
     border-radius: 15px 0px 0px 15px;
+    display:block;
+}
+
+.imgProductoCompleto {
+    height: 250px;
+    border-radius: 15px 15px 15px 15px;
     display:block;
 }
 
@@ -410,6 +416,13 @@ button.btn-pagar{
     padding: 10px;
     display: flex;
     flex-direction: column;
+}
+
+.contenedoresProducto{
+    border-radius: 5px;
+    background: grey;
+    padding: 10px;
+    display: left;
 }
 
 
@@ -656,6 +669,11 @@ textarea.textarea-descripcion{
     background: lightgrey;
 }
 
+.jtable{
+    background: rgb(59, 59, 59);
+    text-align: left;
+}
+
 table{
     width: 100%;
     text-align: left;
@@ -668,6 +686,10 @@ thead{
 
 .th ,.td{
     padding: 20px;
+}
+
+.thProducto ,.tdProducto{
+    padding: 200px;
 }
 
 .tr:nth-child(even){
@@ -757,4 +779,33 @@ thead{
 .logueoCampo {
     border-radius: 5px;
     margin: 13px;
+}
+
+.comentarioTitulo {
+    color: rgb(248, 248, 248);
+    font-size: 170%;
+    margin: 13px;
+}
+
+.comentario {
+    color: rgb(248, 248, 248);
+    margin: 5px;
+}
+
+.comentarioFecha {
+    color: rgb(248, 248, 248);
+    font-size: 125%;
+    margin: 13px;
+}
+
+.pregunta{
+    background: rgb(43, 43, 43);
+    text-align: left;
+}
+
+.respuesta{
+    background: rgb(94, 94, 94);
+    text-align: left;
+    margin: 0 auto;
+    width: 600px;
 }
