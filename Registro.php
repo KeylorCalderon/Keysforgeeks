@@ -14,6 +14,9 @@
             $ultimo_id = mysqli_insert_id($conn); 
             $sql2="INSERT INTO Cliente (direccion, movil, usuarioID) VALUES ('$direc', '$telefono', '$ultimo_id')";
             mysqli_query($conn, $sql2);
+            $ultimo_id2 = mysqli_insert_id($conn);
+            $sql3="INSERT INTO Carrito (clienteID) VALUES ('$ultimo_id2')";
+            mysqli_query($conn, $sql3);
             header("Location: Logueo.php");
         } catch (Exception $e) {
             echo 'Error al cargar datos: ',  $e->getMessage(), "\n";

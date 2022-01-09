@@ -11,6 +11,9 @@ function borrarBD($conn){
         $sql= "DROP TABLE Factura;" ;
         $conn->query($sql);
 
+        $sql= "DROP TABLE FacturaDetalle;" ;
+        $conn->query($sql);
+
         $sql= "DROP TABLE CarritoXVideojuego;" ;
         $conn->query($sql);
 
@@ -135,6 +138,13 @@ function crearBD($conn){
         fecha DATE,
         subtotal FLOAT,
         FOREIGN KEY (carritoID) REFERENCES Carrito (ID));" ;
+        $conn->query($sql);
+
+        $sql= "CREATE TABLE FacturaDetalle(ID INT PRIMARY KEY AUTO_INCREMENT,
+        facturaID INT,
+        nombre VARCHAR(50),
+        precio FLOAT,
+        FOREIGN KEY (facturaID) REFERENCES Factura (ID));" ;
         $conn->query($sql);
 
         $sql= "CREATE TABLE Preguntas(ID INT PRIMARY KEY AUTO_INCREMENT,
@@ -294,6 +304,14 @@ function cargarDatos($conn){
         $sql = "INSERT INTO Factura(carritoID, fecha, subtotal)
         VALUES  (1,'2021-09-21', 78302.50),
                 (2,'2021-11-02', 118302.50);";
+        $conn->query($sql);
+
+        $sql = "INSERT INTO FacturaDetalle(facturaID, nombre, precio)
+        VALUES  (1,'A Hat in Time', 8302.50),
+                (1,'Celeste', 2302.50),
+                (1,'Hollow Knight', 21302.50),
+                (2,'Azul', 302.50),
+                (2,'Celeste', 5302.50);";
         $conn->query($sql);
 
         $sql = "INSERT INTO Preguntas(usuarioID, videojuegoID, comentario, fecha, estrellas)
