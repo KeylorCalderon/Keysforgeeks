@@ -31,7 +31,7 @@
             ?>
             <i class='bx bxs-user'></i>
                     </a>"
-            <a href="./" class="header-icon">
+            <a href='carrito.php' class="header-icon">
                 <i class='bx bxs-cart'></i>
             </a>
         </div>

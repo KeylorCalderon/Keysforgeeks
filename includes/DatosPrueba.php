@@ -8,10 +8,10 @@ function borrarBD($conn){
         $sql= "DROP TABLE Preguntas;" ;
         $conn->query($sql);
 
-        $sql= "DROP TABLE Factura;" ;
+        $sql= "DROP TABLE FacturaDetalle;" ;
         $conn->query($sql);
 
-        $sql= "DROP TABLE FacturaDetalle;" ;
+        $sql= "DROP TABLE Factura;" ;
         $conn->query($sql);
 
         $sql= "DROP TABLE CarritoXVideojuego;" ;
@@ -297,12 +297,15 @@ function cargarDatos($conn){
         VALUES  (2,2),
                 (2,4),
                 (3,5),
-                (3,6),
+                (3,10),
                 (3,15);";
         $conn->query($sql);
 
         $sql = "INSERT INTO Factura(carritoID, fecha, subtotal)
         VALUES  (1,'2021-09-21', 78302.50),
+                (3,'2021-05-11', 312302.50),
+                (3,'2021-03-23', 43302.50),
+                (3,'2019-02-03', 12302.50),
                 (2,'2021-11-02', 118302.50);";
         $conn->query($sql);
 
@@ -310,6 +313,15 @@ function cargarDatos($conn){
         VALUES  (1,'A Hat in Time', 8302.50),
                 (1,'Celeste', 2302.50),
                 (1,'Hollow Knight', 21302.50),
+                (3,'A Hat in Time', 8302.50),
+                (3,'Celeste', 2302.50),
+                (3,'Hollow Knight', 21302.50),
+                (4,'A Hat in Time', 8302.50),
+                (4,'Celeste', 2302.50),
+                (4,'Hollow Knight', 21302.50),
+                (5,'A Hat in Time', 8302.50),
+                (5,'Celeste', 2302.50),
+                (5,'Hollow Knight', 21302.50),
                 (2,'Azul', 302.50),
                 (2,'Celeste', 5302.50);";
         $conn->query($sql);

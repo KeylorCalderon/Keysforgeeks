@@ -5,7 +5,7 @@
         $correo = $_POST['username'];
         $contra = $_POST['password'];
 
-        $result=mysqli_query($connection, "SELECT * FROM Usuario, Cliente WHERE Usuario.email='$correo' AND Usuario.contrasena='$contra' AND Usuario.ID=Cliente.usuarioID");                     
+        $result=mysqli_query($connection, "SELECT Cliente.ID FROM Usuario, Cliente WHERE Usuario.email='$correo' AND Usuario.contrasena='$contra' AND Usuario.ID=Cliente.usuarioID");                     
                     /*while($row=mysqli_fetch_assoc($result)){
                         echo $row["email"];
                     */
@@ -13,8 +13,10 @@
         if (!$row=mysqli_fetch_assoc($result)) {
             header("Location: Logueo.php?error=true");
         } else {
+            $clienteID = $row["ID"];
             session_start();
             $_SESSION['usuario']=$correo;
+            $_SESSION['ID']=$clienteID;
             header("Location: index.php");
         }
         mysqli_close($connection);
