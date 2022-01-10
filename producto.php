@@ -19,10 +19,10 @@
     <div class="wrapper">        
         <main>
             <?php 
-                $ID=$_GET['ID'];
+                $productoID=$_GET['ID'];
                 //echo "<h3>$var</h3>"
                 $conn=conectar();
-                $result=mysqli_query($conn, "SELECT * FROM Videojuego WHERE ID='$ID'");                     
+                $result=mysqli_query($conn, "SELECT * FROM Videojuego WHERE ID='$productoID'");                     
                 $row=mysqli_fetch_assoc($result);
                 $nombre=$row["nombre"];
                 $descripcion=$row["descripcion"];
@@ -67,7 +67,10 @@
 
                             </div>
                         </div>
-                            <a href="#" class="btn">
+                            <?php
+                                echo "<a href='anadirCarrito.php?ID=$productoID' class='btn'>";
+                            ?>
+                            
                                 <p class="text">Comprar</p>
                             </a>
                         </div>
@@ -77,7 +80,7 @@
                     <h2 class="subtitulos">Comentarios</h2>
                     <div class="contenedoresProducto">
                         <?php
-                            $preguntasResult=mysqli_query($conn, "SELECT Preguntas.ID, Preguntas.comentario, Preguntas.estrellas, Preguntas.fecha, Usuario.email FROM Preguntas, Usuario WHERE Preguntas.videojuegoID='$ID' AND Usuario.ID=Preguntas.usuarioID");
+                            $preguntasResult=mysqli_query($conn, "SELECT Preguntas.ID, Preguntas.comentario, Preguntas.estrellas, Preguntas.fecha, Usuario.email FROM Preguntas, Usuario WHERE Preguntas.videojuegoID='$productoID' AND Usuario.ID=Preguntas.usuarioID");
                             while($rowP=mysqli_fetch_assoc($preguntasResult)){
                                 $pregunta=$rowP['comentario'];
                                 $nombre=$rowP['email'];

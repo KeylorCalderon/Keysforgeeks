@@ -17,6 +17,7 @@
                 }else{
                     $nombre=$_SESSION['usuario'];
                     $ID=$_SESSION['ID'];
+                    $IDCarrito=$ID;
                     echo "<div>Carrito de: $nombre<div/>";
                         $conn=conectar();
                         $result=mysqli_query($conn, "SELECT CXV.ID, V.nombre, precios.precio 
@@ -41,12 +42,14 @@
                             $ID=$row['ID'];
                             $nombre=$row['nombre'];
                             $precio=$row['precio'];
-                            echo "<div>$ID</div>
-                                  <div>$nombre</div>
+                            echo "<div>$nombre</div>
                                   <div>$precio</div>";
                         
                         }
                         mysqli_close($conn);
+                        echo "<a href='facturacion.php?ID=$IDCarrito' class='botonLogin'>
+                                <p class='text'>Finalizar compra</p>
+                              </a>";
                 }
             ?>
         </main>

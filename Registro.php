@@ -17,11 +17,11 @@
             $ultimo_id2 = mysqli_insert_id($conn);
             $sql3="INSERT INTO Carrito (clienteID) VALUES ('$ultimo_id2')";
             mysqli_query($conn, $sql3);
+            mysqli_close($conn);
             header("Location: Logueo.php");
         } catch (Exception $e) {
             echo 'Error al cargar datos: ',  $e->getMessage(), "\n";
         }
-        mysqli_close($conn);
     }
 ?>
 
