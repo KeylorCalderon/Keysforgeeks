@@ -1,5 +1,5 @@
 <?php
-    $carritoID=$_GET['ID'];
+    $carritoID = $_GET['ID'];
     echo "<div>HOLA: $ID</div>";
 
     include "includes/Conexion.php";
