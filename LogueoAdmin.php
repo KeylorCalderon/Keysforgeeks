@@ -5,19 +5,19 @@
         $correo = $_POST['username'];
         $contra = $_POST['password'];
 
-        $result=mysqli_query($connection, "SELECT Cliente.ID FROM Usuario, Cliente WHERE Usuario.email='$correo' AND Usuario.contrasena='$contra' AND Usuario.ID=Cliente.usuarioID");                     
+        $result=mysqli_query($connection, "SELECT Administrador.ID FROM Usuario, Administrador WHERE Usuario.email='$correo' AND Usuario.contrasena='$contra' AND Usuario.ID=Administrador.usuarioID");                     
                     /*while($row=mysqli_fetch_assoc($result)){
                         echo $row["email"];
                     */
 
         if (!$row=mysqli_fetch_assoc($result)) {
-            header("Location: Logueo.php?error=true");
+            header("Location: LogueoAdmin.php?error=true");
         } else {
             $clienteID = $row["ID"];
             session_start();
             $_SESSION['usuario']=$correo;
             $_SESSION['ID']=$clienteID;
-            $_SESSION['Admin']='0';
+            $_SESSION['Admin']='1';
             header("Location: index.php");
         }
         mysqli_close($connection);
@@ -51,8 +51,6 @@
             <div class="logueo">
                 <button type="submit" class="botonLogin" name="login" value="login">Loguearse</button>
             </div>
-            <a href="Registro.php">Registrarse</a>
-            <a href="LogueoAdmin.php">Loguear administrador</a>
         </form>
     </div>
     <?php

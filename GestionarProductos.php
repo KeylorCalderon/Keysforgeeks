@@ -8,14 +8,6 @@
 ?>
 
 <body>
- 
-    <?php
-           include "includes/banner.php";
-    ?>
-    
-    <?php
-            include "includes/anuncios.php";
-    ?>
     
     <div class="wrapper">  
         <main>
@@ -28,6 +20,9 @@
                 }
               </style>
             <table class="galeria">
+            <form action='agregarArticulo.php' method='post'>
+                <button type='submit' class='botonProducto' name='ID'>Agregar</button>
+            </form> 
               <?php
                 $conn=conectar();
                 $result=mysqli_query($conn, "SELECT * FROM Videojuego WHERE activo=1");                     
@@ -49,8 +44,11 @@
                   echo          "<h4>$plataforma</h4>
                               </td>
                               <td>
-                              <form action='producto.php?ID=$ID' method='post'>
-                                <button type='submit' class='botonProducto' name='ID' id='$ID'>₡$precio</button>
+                              <form action='EditarProducto.php?ID=$ID' method='post'>
+                                <button type='submit' class='botonProducto' name='ID' id='$ID'>Editar</button>
+                              </form> 
+                              <form action='EliminarProducto.php?ID=$ID' method='post'>
+                                <button type='submit' class='botonProducto' name='ID' id='$ID'>Eliminar</button>
                               </form> 
                               </td>
                               <td width='20px'></td>

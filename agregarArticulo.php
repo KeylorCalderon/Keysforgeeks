@@ -1,22 +1,40 @@
-
-
 <?php 
   if (isset($_POST['nombre'])) {
-      include "includes/Conexion.php";
-      $conn=conectar();
-      $nombre = $_POST['nombre'];
-     $select = $_POST['select'];
-      $precio = $_POST['precio'];
-      $codigo = $_POST['codigo'];
-      $sql = "INSERT INTO Videojuego(nombre, codigo, plataformaID, precio, imagen,descripcion)
-      VALUES  ('$nombre', '$codigo','$select', '$precio' ,'img/MasterCard.png','Un plataformas en 3D homenaje a los viejos clásicos..');";
-        try {
-          mysqli_query($conn, $sql);
-          mysqli_close($conn);
-          header("Location: catalogo-productos-servicios.php");
-      } catch (Exception $e) {
-          echo 'Error al cargar datos: ',  $e->getMessage(), "\n";
-      }
+    $extensiones = array(0=>'image/jpg',1=>'image/jpeg',2=>'image/png');
+    $max_tamanyo = 1024 * 1024 * 16;
+    $ruta_indexphp = dirname(realpath(__FILE__));
+    $ruta_fichero_origen = $_FILES['imagen1']['tmp_name'];
+    if ( in_array($_FILES['imagen1']['type'], $extensiones) ) {
+        echo 'Es una imagen';
+        if ( $_FILES['imagen1']['size']< $max_tamanyo ) {
+              echo 'Pesa menos de 1 MB';
+              
+              echo 'Fichero guardado con éxito';
+                  include "includes/Conexion.php";
+                  $conn=conectar();
+                  $nombre = $_POST['nombre'];
+                  $select = $_POST['select'];
+                  $precio = $_POST['precio'];
+                  $codigo = $_POST['codigo'];
+                  $descripcionVideojuego=$_POST['DescripcionV'];
+                  $sql = "INSERT INTO Videojuego(nombre, codigo, plataformaID, precio, imagen,descripcion, activo)
+                  VALUES  ('$nombre', '$codigo','$select', '$precio' ,'X','$descripcionVideojuego', 1);";
+                    try {
+                      mysqli_query($conn, $sql);
+                      $ultimo_id = mysqli_insert_id($conn); 
+                      $nombreFichero='img/'.$nombre.$ultimo_id.'.png';
+                      $ruta_nuevo_destino = $ruta_indexphp . '/' . $nombreFichero;
+                      move_uploaded_file ($ruta_fichero_origen, $ruta_nuevo_destino);
+
+                      $sql = "UPDATE Videojuego SET imagen='$nombreFichero' WHERE ID='$ultimo_id'";
+                      mysqli_query($conn, $sql);
+                      mysqli_close($conn);
+                      header("Location: GestionarProductos.php");
+                  } catch (Exception $e) {
+                      echo 'Error al cargar datos: ',  $e->getMessage(), "\n";
+                  }
+        }
+    }
   }
 ?>
 <!DOCTYPE html>
@@ -32,12 +50,13 @@
     <div class="carrito">
         <div class="col-md-12 order-md-1">
           <h4 class="mb-3"><b>¡Agrega un videojuego al catálogo!</b></h4>
-          <form class="cont-articulo" action="#" method = "post">
+          <form class="cont-articulo" action="#" method = "post" enctype="multipart/form-data">
               <div class="row">
                 <div class="col-md-12 mb-3"> <label for="nombre">Nombre del videojuego</label>
                   <input type="text" class="form-control" id="nombre" placeholder="Por ejemplo: Final Fantasy X" name="nombre" required="">
                 </div>
               </div>
+              <input type="file" name="imagen1" />
                 <div class="row">
                   <div class="col-md-12 mb-3"> <label for="plataforma">Plataforma</label> 
                     <select class="form-control" id="plataforma" required="" name = "select">
@@ -63,6 +82,10 @@
             <div> 
                 <label for="Codigo">Codigo del videojuego</label>
                 <input type="text" class="form-control" id="Codigo"  name="codigo" required="">
+            </div>
+            <div> 
+                <label for="DescripcionV">Descripción del videojuego</label>
+                <input type="text" class="form-control" id="DescripcionV"  name="DescripcionV" required="">
             </div>
             </div>
             <div class="rowbtn">
