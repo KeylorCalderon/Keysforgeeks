@@ -1,15 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 
-
-
 <?php
         include "includes/Encabezado.php";
 ?>
 
-
 <body>
-    <div class="wrapper">        
+    <div class="wrapper">       
         <main>
             <?php
                 if(@$_SESSION['usuario']==null || $_SESSION['usuario']==''){
@@ -18,7 +15,12 @@
                     $nombre=$_SESSION['usuario'];
                     $ID=$_SESSION['ID'];
                     $IDCarrito=$ID;
-                    echo "<div>Carrito de: $nombre<div/>";
+                    ?>
+        <div class="carrito">
+                <?php  echo "<h2 class='subtitulos'>Carrito de: $nombre</h2>";?>
+            <div class="cont-carrito">
+                    <?php
+                    echo "<div>Productos:<div/>";
                         $conn=conectar();
                         $result=mysqli_query($conn, "SELECT CXV.ID, V.nombre, precios.precio 
                                                     FROM CarritoXVideojuego CXV, Videojuego V,(
@@ -42,20 +44,21 @@
                             $ID=$row['ID'];
                             $nombre=$row['nombre'];
                             $precio=$row['precio'];
-                            echo "<div>$nombre</div>
-                                  <div>$precio</div>";
-                        
+                            echo "<div class='text-fact-carrito'>$nombre:₡ $precio</div>
+                                  ";
+
                         }
                         mysqli_close($conn);
-                        echo "<a href='facturacion.php?ID=$IDCarrito' class='botonLogin'>
-                                <p class='text'>Finalizar compra</p>
-                              </a>";
+                        echo "<div class='text-fact-carrito'><a href='facturacion.php?ID=$IDCarrito' class='btn-carrito'>
+                                Finalizar compra
+                              </a></div>";
                 }
             ?>
+            </div>
+        </div>
         </main>
 
     </div>
-
     <?php
         include "includes/PiePagina.php";
     ?>

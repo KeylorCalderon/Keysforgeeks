@@ -881,3 +881,52 @@ thead{
     margin: 0 auto;
     width: 600px;
 }
+
+.cont-carrito{
+    border-radius: 5px;
+    background: grey;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 17px;
+}
+
+.carrito{ 
+    display: block;
+    width: 40%;
+    overflow: hidden;
+    margin: auto;
+    background: rgb(168, 168, 168);
+    padding: 15px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.btn-carrito{
+    text-decoration: none;
+    padding: 5px 10px 5px 10px;
+    font-size: 12px;
+    border-radius: 5px;
+    border-color: transparent;
+    color: #000;
+    cursor: pointer;
+    background: #ffed00;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
+}
+
+.text-fact-carrito{
+    display: block;
+    padding-top: 20px;
+    color: rgb(248, 248, 248);
+    
+}
+
+
+.cont-compras{
+    border-radius: 5px;
+    background: grey;
+    padding: 10px;
+}
