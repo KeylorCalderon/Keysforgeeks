@@ -54,7 +54,7 @@
           <form class="cont-articulo" action="#" method = "post" enctype="multipart/form-data">
               <div class="row">
                 <div class="col-md-12 mb-3"> <label for="nombre">Nombre del videojuego</label>
-                  <input type="text" class="form-control" id="nombre" placeholder="Por ejemplo: Final Fantasy X" name="nombre" required="">
+                  <input type="text" class="form-control" id="nombre" placeholder="Por ejemplo: Final Fantasy X" name="nombre" required>
                 </div>
               </div>
               <div class="row">
@@ -64,7 +64,7 @@
               </div>
                 <div class="row">
                   <div class="col-md-12 mb-3"> <label for="plataforma">Plataforma</label> 
-                    <select class="form-control" id="plataforma" required="" name = "select">
+                    <select class="form-control" id="plataforma" required name = "select">
                         <option value="">Elige...</option>
                         <option value="1">Steam</option>
                         <option value="2">Epic</option>
@@ -81,18 +81,19 @@
             <div class="row">
             <div> 
                 <label for="precio">Precio del videojuego</label>
-                <input type="number" class="form-control" id="precio"  name="precio" required="">
+                <input type="number" class="form-control" id="precio"  name="precio" required>
             </div>
             </div>
             <div class="row">
             <div> 
                 <label for="Codigo">Codigo del videojuego</label>
-                <input type="text" class="form-control" id="Codigo"  name="codigo" required="">
+                <input type="text" class="form-control" id="Codigo"  name="codigo" required>
+            </div>
             </div>
             <div class="row"> 
               <div>
                 <label for="DescripcionV">Descripción del videojuego</label>
-                <input type="text" class="form-control" id="DescripcionV"  name="DescripcionV" required="">
+                <input type="text" class="form-control" id="DescripcionV"  name="DescripcionV" required>
               </div>
             </div>
             </div>

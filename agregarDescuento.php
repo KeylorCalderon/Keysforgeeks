@@ -53,7 +53,7 @@
           <form class="cont-articulo" action="#" method = "post" enctype="multipart/form-data">
               <div class="row">
                 <div class="col-md-12 mb-3"> <label for="nombre">Porcentaje de descuento</label>
-                  <input type="number" min="1" max="99" class="form-control" id="porcentaje" placeholder="Por ejemplo: 1-90" name="porcentaje" required="">
+                  <input type="number" min="1" max="99" class="form-control" id="porcentaje" placeholder="Por ejemplo: 1-90" name="porcentaje" required>
                 </div>
               </div>
               <div class="row">
@@ -63,7 +63,7 @@
               </div>
                 <div class="row">
                   <div class="col-md-12 mb-3"> <label for="plataforma">Videojuego</label> 
-                    <select class="form-control" id="plataforma" required="" name = "select">
+                    <select class="form-control" id="plataforma" required name = "select">
                         <option value="">Elige...</option>
                         <?php
                             $conn=conectar();
