@@ -30,14 +30,14 @@
                         mysqli_close($conn);
                         header("Location: GestionarProductos.php");
                       }
-                      echo 'Error al cargar imagen';
+                      echo "<div>error al cargar la imagen '$ruta_nuevo_destino'</div>";
                   } catch (Exception $e) {
                       echo 'Error al cargar datos: ',  $e->getMessage(), "\n";
                   }
         }
     }
   }
-?>
+?>  
 <!DOCTYPE html>
 <html>
 <head>   
