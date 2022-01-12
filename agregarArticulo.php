@@ -1,15 +1,16 @@
 <?php 
+  include "includes/sesionInicio.php";
   if (isset($_POST['nombre'])) {
     $extensiones = array(0=>'image/jpg',1=>'image/jpeg',2=>'image/png');
     $max_tamanyo = 1024 * 1024 * 16;
     $ruta_indexphp = dirname(realpath(__FILE__));
     $ruta_fichero_origen = $_FILES['imagen1']['tmp_name'];
     if ( in_array($_FILES['imagen1']['type'], $extensiones) ) {
-        echo 'Es una imagen';
+        //echo 'Es una imagen';
         if ( $_FILES['imagen1']['size']< $max_tamanyo ) {
-              echo 'Pesa menos de 1 MB';
+              //echo 'Pesa menos de 1 MB';
               
-              echo 'Fichero guardado con éxito';
+              //echo 'Fichero guardado con éxito';
                   include "includes/Conexion.php";
                   $conn=conectar();
                   $nombre = $_POST['nombre'];
@@ -28,9 +29,10 @@
                         $sql = "UPDATE Videojuego SET imagen='$nombreFichero' WHERE ID='$ultimo_id'";
                         mysqli_query($conn, $sql);
                         mysqli_close($conn);
-                        header("Location: GestionarProductos.php");
+                        //header("Location: GestionarProductos.php");
+                        echo "<script>location.href='GestionarProductos.php';</script>";
                       }
-                      echo "<div>Error al cargar la imagen '$ruta_nuevo_destino'</div>";
+                      //echo "<div>Error al cargar la imagen '$ruta_nuevo_destino'</div>";
                   } catch (Exception $e) {
                       echo 'Error al cargar datos: ',  $e->getMessage(), "\n";
                   }
@@ -81,7 +83,7 @@
             <div class="row">
             <div> 
                 <label for="precio">Precio del videojuego</label>
-                <input type="number" class="form-control" id="precio"  name="precio" required>
+                <input type="number" class="form-control" id="precio"  name="precio" min='1' required>
             </div>
             </div>
             <div class="row">

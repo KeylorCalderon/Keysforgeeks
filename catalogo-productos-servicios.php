@@ -1,3 +1,7 @@
+<?php
+        include "includes/sesionInicio.php";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -49,9 +53,17 @@
                   echo          "<h4>$plataforma</h4>
                               </td>
                               <td>
-                              <form action='producto.php?ID=$ID' method='post'>
-                                <button type='submit' class='botonProducto' name='ID' id='$ID'>₡$precio</button>
-                              </form> 
+                              <form action='producto.php?ID=$ID' method='post'>";
+                  $result2=mysqli_query($conn, "SELECT * FROM Descuento WHERE videojuegoID='$ID'"); 
+                  if($row2=mysqli_fetch_assoc($result2)){
+                    $descuento=$row2['descuento'];
+                    echo "<div class='nombreProductoDescuento'>¡$descuento% de descuento!</div>";
+                    $precioRebajado=$precio-($precio*$descuento/100);
+                    echo "<button type='submit' class='botonProducto' name='ID' id='$ID'>₡$precioRebajado</button>";
+                  }else{
+                    echo "<button type='submit' class='botonProducto' name='ID' id='$ID'>₡$precio</button>";
+                  }
+                  echo       "</form> 
                               </td>
                               <td width='20px'></td>
                             </tr>

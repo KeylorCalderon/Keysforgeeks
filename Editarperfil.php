@@ -1,8 +1,12 @@
+<?php
+        include "includes/sesionInicio.php";
+?>
 <?php 
   if (isset($_POST['direccion'])) {
         include "includes/Conexion.php";
         if(empty($_POST['direccion']) || empty($_POST['movil']) || empty($_POST['email']) || empty($_POST['contrasena'])){
-            header("Location: Editarperfil.php");
+            echo "<script>location.href='Editarperfil.php';</script>";
+            //header("Location: Editarperfil.php");
         }else{
             $userID = $_POST['usuarioID'];
             $clienID = $_POST['IDcliente'];
@@ -16,7 +20,10 @@
             $sql = "UPDATE Cliente SET direccion='$dir',movil ='$mov'  WHERE ID='$clienID'";
             mysqli_query($conn, $sql);
             mysqli_close($conn);
-            header("Location: usuario.php");
+            session_start();
+            $_SESSION['usuario']=$mail;
+            echo "<script>location.href='usuario.php';</script>";
+            //header("Location: usuario.php");
         }
     }
 ?> 
@@ -63,7 +70,7 @@
                         </div>
                         <div class="row">
                             <div> 
-                                <label for="email">E-mail: </label>
+                                <label for="email">Nombre de usuario: </label>
                                 <input type="text" class="form-control" id="email" name="email" value = "<?php echo $email; ?>">
                             </div>
                         </div>

@@ -7,5 +7,6 @@
     mysqli_query($conn, $sql);        
 
     mysqli_close($conn);
-    header("Location: GestionarDescuentos.php");
+    echo "<script>location.href='GestionarDescuentos.php';</script>";
+    //header("Location: GestionarDescuentos.php");
 ?>

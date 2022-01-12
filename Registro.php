@@ -1,4 +1,7 @@
 <?php
+        include "includes/sesionInicio.php";
+?>
+<?php
     if (isset($_POST['username'])) {
         include "includes/Conexion.php";
         $conn=conectar();
@@ -18,7 +21,8 @@
             $sql3="INSERT INTO Carrito (clienteID) VALUES ('$ultimo_id2')";
             mysqli_query($conn, $sql3);
             mysqli_close($conn);
-            header("Location: Logueo.php");
+            echo "<script>location.href='Logueo.php';</script>";
+            //header("Location: Logueo.php");
         } catch (Exception $e) {
             echo 'Error al cargar datos: ',  $e->getMessage(), "\n";
         }

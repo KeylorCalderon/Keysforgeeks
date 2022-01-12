@@ -1,3 +1,6 @@
+<?php
+        include "includes/sesionInicio.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 

@@ -1,4 +1,5 @@
 <?php 
+  include "includes/sesionInicio.php";
   if (isset($_POST['porcentaje'])) {
     $extensiones = array(0=>'image/jpg',1=>'image/jpeg',2=>'image/png');
     $max_tamanyo = 1024 * 1024 * 16;
@@ -25,7 +26,8 @@
                         $sql = "UPDATE Descuento SET imagen='$nombreFichero' WHERE ID='$ultimo_id'";
                         mysqli_query($conn, $sql);
                         mysqli_close($conn);
-                        header("Location: GestionarDescuentos.php");
+                        echo "<script>location.href='GestionarDescuentos.php';</script>";
+                        //header("Location: GestionarDescuentos.php");
                       }else{
                         echo "<div>Error al cargar la imagen '$ruta_nuevo_destino'</div>";
                       }

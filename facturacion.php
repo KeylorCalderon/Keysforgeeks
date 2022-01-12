@@ -1,4 +1,7 @@
 <?php
+        include "includes/sesionInicio.php";
+?>
+<?php
     $carritoID = $_GET['ID'];
     echo "<div>HOLA: $ID</div>";
 
@@ -47,7 +50,8 @@
             
 
             mysqli_close($conn);
-            header("Location: carrito.php");
+            echo "<script>location.href='carrito.php';</script>";
+            //header("Location: carrito.php");
         } catch (Exception $e) {
             echo 'Error al cargar datos: ',  $e->getMessage(), "\n";
         }

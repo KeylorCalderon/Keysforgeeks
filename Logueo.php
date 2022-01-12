@@ -1,4 +1,7 @@
 <?php
+        include "includes/sesionInicio.php";
+?>
+<?php
     if (isset($_POST['username'])) {
         include "includes/Conexion.php";
         $connection=conectar();
@@ -11,14 +14,15 @@
                     */
 
         if (!$row=mysqli_fetch_assoc($result)) {
-            header("Location: Logueo.php?error=true");
+            echo "<script>location.href='Logueo.php?error=true';</script>";
+            //header("Location: Logueo.php?error=true");
         } else {
             $clienteID = $row["ID"];
-            session_start();
             $_SESSION['usuario']=$correo;
             $_SESSION['ID']=$clienteID;
             $_SESSION['Admin']='0';
-            header("Location: index.php");
+            echo "<script>location.href='index.php';</script>";
+            //header("Location: index.php");
         }
         mysqli_close($connection);
     }
