@@ -959,3 +959,9 @@ thead{
     width: 100px;
 }
 
+.cont-perfil{
+    margin-top: 10px;
+    border-radius: 5px;
+    background: grey;
+    padding: 10px;
+}

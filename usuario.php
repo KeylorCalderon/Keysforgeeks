@@ -24,6 +24,7 @@
                 echo "<h1>
                         Pantalla de usuario '$nombreUsuario'
                     </h1>
+                    <a href='Editarperfil.php'>Editar Perfil</a>
                     <a href='ComprasAnteriores.php'>Compras anteriores</a>
                     <a href='Logout.php'>Cerrar sesión</a>";
             }
