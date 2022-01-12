@@ -24,12 +24,13 @@
                       $ultimo_id = mysqli_insert_id($conn); 
                       $nombreFichero='img/'.$nombre.$ultimo_id.'.png';
                       $ruta_nuevo_destino = $ruta_indexphp . '/' . $nombreFichero;
-                      move_uploaded_file ($ruta_fichero_origen, $ruta_nuevo_destino);
-
-                      $sql = "UPDATE Videojuego SET imagen='$nombreFichero' WHERE ID='$ultimo_id'";
-                      mysqli_query($conn, $sql);
-                      mysqli_close($conn);
-                      header("Location: GestionarProductos.php");
+                      if(move_uploaded_file ($ruta_fichero_origen, $ruta_nuevo_destino)){
+                        $sql = "UPDATE Videojuego SET imagen='$nombreFichero' WHERE ID='$ultimo_id'";
+                        mysqli_query($conn, $sql);
+                        mysqli_close($conn);
+                        header("Location: GestionarProductos.php");
+                      }
+                      echo 'Error al cargar imagen';
                   } catch (Exception $e) {
                       echo 'Error al cargar datos: ',  $e->getMessage(), "\n";
                   }
