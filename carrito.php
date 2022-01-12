@@ -11,7 +11,10 @@
             <?php
                 if(@$_SESSION['usuario']==null || $_SESSION['usuario']==''){
                     echo "<div>Usuario no logueado</div>";
-                }else{
+                }elseif($_SESSION['Admin']=='1'){
+                    echo "<div>Debe ser un usuario cliente</div>";
+                }
+                else{
                     $nombre=$_SESSION['usuario'];
                     $ID=$_SESSION['ID'];
                     $IDCarrito=$ID;
