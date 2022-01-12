@@ -15,12 +15,11 @@
             if ( $_FILES['imagen1']['size']< $max_tamanyo ) {
                 echo 'Pesa menos de 1 MB';
                 
-                $nombreFichero='img/'.$nombre.$ultimo_id.'.png';
+                $nombreFichero='img/Editado'.$productoID.'.png';
                 $ruta_nuevo_destino = $ruta_indexphp . '/' . $nombreFichero;
                 if(move_uploaded_file ($ruta_fichero_origen, $ruta_nuevo_destino)){
                     $sql = "UPDATE Videojuego SET imagen='$nombreFichero' WHERE ID='$productoID'";
                     mysqli_query($conn, $sql);
-                    mysqli_close($conn);
                 }   
             }
         }
@@ -43,6 +42,7 @@
         $sql="UPDATE Videojuego SET descripcion='$descripcion' WHERE ID='$productoID'";
         mysqli_query($conn, $sql);
     } 
+    mysqli_close($conn);
     header("Location: GestionarProductos.php");
   }
 ?>  
@@ -92,7 +92,7 @@
             <div> 
                 <label for="precio">Precio del videojuego</label>
                 <?php
-                    echo "<input type='number' class='form-control' id='precio' placeholder='$precio'  name='precio'>";
+                    echo "<input type='number' class='form-control' id='precio' min='1' placeholder='$precio'  name='precio'>";
                 ?>
                 <input type="checkbox" name="cambiarPrecio" checked />
                 <label>Cambiar</label>

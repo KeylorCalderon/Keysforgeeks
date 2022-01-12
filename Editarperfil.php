@@ -16,6 +16,8 @@
             $sql = "UPDATE Cliente SET direccion='$dir',movil ='$mov'  WHERE ID='$clienID'";
             mysqli_query($conn, $sql);
             mysqli_close($conn);
+            session_start();
+            $_SESSION['usuario']=$mail;
             header("Location: usuario.php");
         }
     }
@@ -63,7 +65,7 @@
                         </div>
                         <div class="row">
                             <div> 
-                                <label for="email">E-mail: </label>
+                                <label for="email">Nombre de usuario: </label>
                                 <input type="text" class="form-control" id="email" name="email" value = "<?php echo $email; ?>">
                             </div>
                         </div>

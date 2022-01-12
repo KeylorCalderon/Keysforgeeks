@@ -81,7 +81,7 @@
             <div class="row">
             <div> 
                 <label for="precio">Precio del videojuego</label>
-                <input type="number" class="form-control" id="precio"  name="precio" required>
+                <input type="number" class="form-control" id="precio"  name="precio" min='1' required>
             </div>
             </div>
             <div class="row">
