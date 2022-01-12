@@ -20,7 +20,7 @@
                     <a href='Logout.php'>Cerrar sesión</a>";
             }
             else{
-                $nombreUsuario=$_SESSION['usuario'];
+                $nombreUsuario= $_SESSION['usuario'];
                 echo "<h1>
                         Pantalla de usuario '$nombreUsuario'
                     </h1>
