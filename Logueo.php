@@ -1,4 +1,7 @@
 <?php
+        include "includes/sesionInicio.php";
+?>
+<?php
     if (isset($_POST['username'])) {
         include "includes/Conexion.php";
         $connection=conectar();
@@ -14,7 +17,6 @@
             header("Location: Logueo.php?error=true");
         } else {
             $clienteID = $row["ID"];
-            session_start();
             $_SESSION['usuario']=$correo;
             $_SESSION['ID']=$clienteID;
             $_SESSION['Admin']='0';

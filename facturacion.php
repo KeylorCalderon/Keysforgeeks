@@ -1,4 +1,7 @@
 <?php
+        include "includes/sesionInicio.php";
+?>
+<?php
     $carritoID = $_GET['ID'];
     echo "<div>HOLA: $ID</div>";
 

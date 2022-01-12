@@ -1,4 +1,7 @@
 <?php
+        include "includes/sesionInicio.php";
+?>
+<?php
     if (isset($_POST['username'])) {
         include "includes/Conexion.php";
         $conn=conectar();

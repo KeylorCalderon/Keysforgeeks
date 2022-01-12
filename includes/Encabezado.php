@@ -22,7 +22,6 @@
 
         <div class="botones-header">
             <?php
-                session_start();
                 if(@$_SESSION['usuario']==null || $_SESSION['usuario']==''){
                     echo "<a href='Logueo.php' class='header-icon'>";
                 }else{

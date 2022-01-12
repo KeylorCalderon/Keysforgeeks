@@ -1,3 +1,6 @@
+<?php
+        include "includes/sesionInicio.php";
+?>
 <?php 
   if (isset($_POST['precio']) || isset($_POST['codigo']) || isset($_POST['cambiarImagen']) || isset($_POST['DescripcionV'])) {
 

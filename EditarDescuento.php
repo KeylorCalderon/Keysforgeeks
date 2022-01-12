@@ -1,3 +1,6 @@
+<?php
+        include "includes/sesionInicio.php";
+?>
 <?php 
   if (isset($_POST['porcentaje'])) {
 

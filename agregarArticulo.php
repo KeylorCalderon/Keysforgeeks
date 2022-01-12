@@ -1,4 +1,5 @@
 <?php 
+  include "includes/sesionInicio.php";
   if (isset($_POST['nombre'])) {
     $extensiones = array(0=>'image/jpg',1=>'image/jpeg',2=>'image/png');
     $max_tamanyo = 1024 * 1024 * 16;
