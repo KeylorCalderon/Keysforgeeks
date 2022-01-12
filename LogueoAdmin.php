@@ -14,13 +14,15 @@
                     */
 
         if (!$row=mysqli_fetch_assoc($result)) {
-            header("Location: LogueoAdmin.php?error=true");
+            echo "<script>location.href='LogueoAdmin.php?error=true';</script>";
+            //header("Location: LogueoAdmin.php?error=true");
         } else {
             $clienteID = $row["ID"];
             $_SESSION['usuario']=$correo;
             $_SESSION['ID']=$clienteID;
             $_SESSION['Admin']='1';
-            header("Location: index.php");
+            echo "<script>location.href='index.php';</script>";
+            //header("Location: index.php");
         }
         mysqli_close($connection);
     }

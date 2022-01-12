@@ -12,6 +12,8 @@ function conectar(){
     $password = "";
     //$username = "usuario";
     //$password = "1234";
+    //$username = "keysforgeeks_usuario";
+    //$password = "4J=RLCuxM+]q";
 
     $conn = mysqli_connect($servername, $username, $password, $database);
     if(!$conn)

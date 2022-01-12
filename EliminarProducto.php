@@ -7,5 +7,6 @@
     mysqli_query($conn, $sql);        
 
     mysqli_close($conn);
-    header("Location: GestionarProductos.php");
+    echo "<script>location.href='GestionarProductos.php';</script>";
+    //header("Location: GestionarProductos.php");
 ?>

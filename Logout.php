@@ -2,5 +2,6 @@
     session_start();
     session_destroy();
     //$_SESSION['usuario'] = null;
-    header("Location: index.php");
+    echo "<script>location.href='index.php';</script>";
+    //header("Location: index.php");
 ?>

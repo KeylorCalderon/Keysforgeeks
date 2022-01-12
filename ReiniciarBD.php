@@ -6,5 +6,5 @@
     crearBD($conn);
     cargarDatos($conn);
     cerrar($conn);
-    header("Location: index.php");
+    echo "<script>location.href='index.php';</script>";
 ?>

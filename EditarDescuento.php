@@ -14,9 +14,9 @@
         $ruta_indexphp = dirname(realpath(__FILE__));
         $ruta_fichero_origen = $_FILES['imagen1']['tmp_name'];
         if ( in_array($_FILES['imagen1']['type'], $extensiones) ) {
-            echo 'Es una imagen';
+            //echo 'Es una imagen';
             if ( $_FILES['imagen1']['size']< $max_tamanyo ) {
-                echo 'Pesa menos de 1 MB';
+                //echo 'Pesa menos de 1 MB';
                 
                 $nombreFichero='img/DescuentoEditado'.$productoID.'.png';
                 $ruta_nuevo_destino = $ruta_indexphp . '/' . $nombreFichero;
@@ -31,7 +31,8 @@
     $sql="UPDATE Descuento SET descuento='$precio' WHERE ID='$productoID'";
     mysqli_query($conn, $sql);
     mysqli_close($conn); 
-    header("Location: GestionarDescuentos.php");
+    echo "<script>location.href='GestionarDescuentos.php';</script>";
+    //header("Location: GestionarDescuentos.php");
   }
 ?>  
 <!DOCTYPE html>

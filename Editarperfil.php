@@ -5,7 +5,8 @@
   if (isset($_POST['direccion'])) {
         include "includes/Conexion.php";
         if(empty($_POST['direccion']) || empty($_POST['movil']) || empty($_POST['email']) || empty($_POST['contrasena'])){
-            header("Location: Editarperfil.php");
+            echo "<script>location.href='Editarperfil.php';</script>";
+            //header("Location: Editarperfil.php");
         }else{
             $userID = $_POST['usuarioID'];
             $clienID = $_POST['IDcliente'];
@@ -21,7 +22,8 @@
             mysqli_close($conn);
             session_start();
             $_SESSION['usuario']=$mail;
-            header("Location: usuario.php");
+            echo "<script>location.href='usuario.php';</script>";
+            //header("Location: usuario.php");
         }
     }
 ?> 
