@@ -56,7 +56,11 @@
                   <input type="text" class="form-control" id="nombre" placeholder="Por ejemplo: Final Fantasy X" name="nombre" required="">
                 </div>
               </div>
-              <input type="file" name="imagen1" />
+              <div class="row">
+                <div>
+                    <input type="file" class="inputimg" name="imagen1" />
+                </div>
+              </div>
                 <div class="row">
                   <div class="col-md-12 mb-3"> <label for="plataforma">Plataforma</label> 
                     <select class="form-control" id="plataforma" required="" name = "select">
@@ -72,6 +76,7 @@
                       </select>
                   </div>
               </div>
+
             <div class="row">
             <div> 
                 <label for="precio">Precio del videojuego</label>
@@ -83,13 +88,15 @@
                 <label for="Codigo">Codigo del videojuego</label>
                 <input type="text" class="form-control" id="Codigo"  name="codigo" required="">
             </div>
-            <div> 
+            <div class="row"> 
+              <div>
                 <label for="DescripcionV">Descripción del videojuego</label>
                 <input type="text" class="form-control" id="DescripcionV"  name="DescripcionV" required="">
+              </div>
             </div>
             </div>
             <div class="rowbtn">
-            <button type="submit" class="btn-carrito">Registrarse</button>
+            <button type="submit" class="btn-carrito">¡Agregalo ahora!</button>
             </div>
           </form>
         </div>

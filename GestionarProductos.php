@@ -23,6 +23,7 @@
             <form action='agregarArticulo.php' method='post'>
                 <button type='submit' class='botonProducto' name='ID'>Agregar</button>
             </form> 
+           
               <?php
                 $conn=conectar();
                 $result=mysqli_query($conn, "SELECT * FROM Videojuego WHERE activo=1");                     
