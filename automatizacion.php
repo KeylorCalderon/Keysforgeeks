@@ -69,17 +69,17 @@
                     </form>
 
                     <?php
-                        if(isset($_POST['llaveTienda'])) {
-                            $llaveT = $_POST['llaveTienda'];
-                            $conn=conectar();
-                            $sql="UPDATE Llave SET llaveTienda='$llaveT' WHERE llaveEmpresa='$llave'";
-                            mysqli_query($conn, $sql);
-                            mysqli_close($conn);
-                            echo "<script>location.href='index.php';</script>";
-                        }
                     }
                 }
 		}
+        if(isset($_POST['llaveTienda'])) {
+            $llaveT = $_POST['llaveTienda'];
+            $conn=conectar();
+            $sql="UPDATE Llave SET llaveTienda='$llaveT' WHERE llaveEmpresa='$llave'";
+            mysqli_query($conn, $sql);
+            mysqli_close($conn);
+            echo "<script>location.href='facturasAutomaticas.php';</script>";
+        }
 ?>
 <?php
     include "includes/PiePagina.php";
