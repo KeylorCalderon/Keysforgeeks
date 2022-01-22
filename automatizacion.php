@@ -42,7 +42,6 @@
                 if(isset($_POST['llave'])) {
                     $empresa = 'EmpresaPruebaWeb';
                     $llave = $_POST['llave'];
-
                     $conn=conectar();
                     $sql="INSERT INTO Llave(llaveEmpresa, llaveTienda) VALUES ('$llave', 'No insertado')";
                     mysqli_query($conn, $sql);
@@ -50,7 +49,7 @@
 
                     $tienda = 'Keysforgeeks';
                     $ubicacion = 'Calle 15, Avenida 14., 1 km Sur de la Basílica de los Ángeles., Provincia de Cartago, Cartago, 30101';
-    
+
                     $parametros = array ( 'empresa' => "$empresa",
                                   'llave' => "$llave",
                                   'tienda' => "$tienda",
@@ -65,7 +64,9 @@
                             <label for="location">Llave de la tienda</label>
                             <input type="text" name="llaveTienda" class="form-control"  placeholder="Llave de autenticación de la empresa" required/>
                         </div>
-                        <button type="submit" name="submit2" class="btn btn-default">Submit</button>
+                        <?php
+                            echo "<button  value ='$llave' type='submit' name='submit2' class='btn btn-default'>Submit</button>";
+                        ?>
                     </form>
 
                     <?php
@@ -73,7 +74,7 @@
                 }
 		}
         if(isset($_POST['llaveTienda'])) {
-            $llaveT = $_POST['llaveTienda'];
+            $llave = $_POST['submit2'];
             $conn=conectar();
             $sql="UPDATE Llave SET llaveTienda='$llaveT' WHERE llaveEmpresa='$llave'";
             mysqli_query($conn, $sql);
@@ -81,6 +82,7 @@
             echo "<script>location.href='facturasAutomaticas.php';</script>";
         }
 ?>
+
 <?php
     include "includes/PiePagina.php";
 ?>
