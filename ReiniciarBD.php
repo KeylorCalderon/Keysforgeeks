@@ -5,6 +5,7 @@
     borrarBD($conn);
     crearBD($conn);
     cargarDatos($conn);
+    llaveEmpresa($conn);
     cerrar($conn);
     echo "<script>location.href='index.php';</script>";
 ?>

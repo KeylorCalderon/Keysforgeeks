@@ -138,6 +138,7 @@ function crearBD($conn){
         carritoID INT,
         fecha DATE,
         subtotal FLOAT,
+        estado BIT,
         FOREIGN KEY (carritoID) REFERENCES Carrito (ID));" ;
         $conn->query($sql);
 
@@ -302,12 +303,12 @@ function cargarDatos($conn){
                 (3,15);";
         $conn->query($sql);
 
-        $sql = "INSERT INTO Factura(carritoID, fecha, subtotal)
-        VALUES  (1,'2021-09-21', 78302.50),
-                (3,'2021-05-11', 312302.50),
-                (3,'2021-03-23', 43302.50),
-                (3,'2019-02-03', 12302.50),
-                (2,'2021-11-02', 118302.50);";
+        $sql = "INSERT INTO Factura(carritoID, fecha, subtotal, estado)
+        VALUES  (1,'2021-09-21', 78302.50, 1),
+                (3,'2021-05-11', 312302.50, 1),
+                (3,'2021-03-23', 43302.50, 1),
+                (3,'2019-02-03', 12302.50, 1),
+                (2,'2021-11-02', 118302.50, 1);";
         $conn->query($sql);
 
         $sql = "INSERT INTO FacturaDetalle(facturaID, nombre, precio)
@@ -341,4 +342,12 @@ function cargarDatos($conn){
         echo 'Error al cargar datos: ',  $e->getMessage(), "\n";
     }
 }
+
+function llaveEmpresa($conn){
+        try {
+            $sql = "CREATE TABLE Llave(ID INT PRIMARY KEY AUTO_INCREMENT, llaveCodigo VARCHAR(100));";
+            $conn->query($sql);
+        } catch (Exception $e) {
+                echo 'Error al cargar datos: ',  $e->getMessage(), "\n";
+        }
 ?>

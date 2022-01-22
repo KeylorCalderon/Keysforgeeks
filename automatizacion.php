@@ -42,6 +42,12 @@
                 if(isset($_POST['llave'])) {
                     $empresa = 'EmpresaPruebaWeb';
                     $llave = $_POST['llave'];
+
+                    $conn=conectar();
+                    $sql="INSERT INTO Llave(llaveCodigo) VALUES ('$llave')";
+                    mysqli_query($conn, $sql);
+                    mysqli_close($conn);
+
                     $tienda = 'Keysforgeeks';
                     $ubicacion = 'Calle 15, Avenida 14., 1 km Sur de la Basílica de los Ángeles., Provincia de Cartago, Cartago, 30101';
     

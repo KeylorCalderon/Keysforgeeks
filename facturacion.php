@@ -8,7 +8,7 @@
     include "includes/Conexion.php";
     $conn=conectar();
 
-    $sql="INSERT INTO Factura(carritoID, fecha, subtotal) VALUES ('$carritoID', CURDATE(), 0)";
+    $sql="INSERT INTO Factura(carritoID, fecha, subtotal, estado) VALUES ('$carritoID', CURDATE(), 0, 1)";
 
         try {
             mysqli_query($conn, $sql);
