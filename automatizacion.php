@@ -44,7 +44,7 @@
                     $llave = $_POST['llave'];
 
                     $conn=conectar();
-                    $sql="INSERT INTO Llave(llaveCodigo) VALUES ('$llave')";
+                    $sql="INSERT INTO Llave(llaveEmpresa, llaveTienda) VALUES ('$llave', 'No insertado')";
                     mysqli_query($conn, $sql);
                     mysqli_close($conn);
 
@@ -59,7 +59,24 @@
                     if (empty($response))
                         echo "No se recibió respuesta del servicio</h3>";
                     else{
-                        echo "<script>location.href='index.php';</script>";
+                    ?>
+                    <form class="form-inline" action="" method="POST">
+                        <div class="form-group">
+                            <label for="location">Llave de la tienda</label>
+                            <input type="text" name="llaveTienda" class="form-control"  placeholder="Llave de autenticación de la empresa" required/>
+                        </div>
+                        <button type="submit" name="submit2" class="btn btn-default">Submit</button>
+                    </form>
+
+                    <?php
+                        if(isset($_POST['llaveTienda'])) {
+                            $llaveT = $_POST['llaveTienda'];
+                            $conn=conectar();
+                            $sql="UPDATE Llave SET llaveTienda='$llaveT' WHERE llaveEmpresa='$llave'";
+                            mysqli_query($conn, $sql);
+                            mysqli_close($conn);
+                            echo "<script>location.href='index.php';</script>";
+                        }
                     }
                 }
 		}

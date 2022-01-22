@@ -345,9 +345,10 @@ function cargarDatos($conn){
 
 function llaveEmpresa($conn){
         try {
-            $sql = "CREATE TABLE Llave(ID INT PRIMARY KEY AUTO_INCREMENT, llaveCodigo VARCHAR(100));";
+            $sql = "CREATE TABLE Llave(ID INT PRIMARY KEY AUTO_INCREMENT, llaveEmpresa VARCHAR(100), llaveTienda VARCHAR(100));";
             $conn->query($sql);
         } catch (Exception $e) {
                 echo 'Error al cargar datos: ',  $e->getMessage(), "\n";
         }
+}
 ?>
