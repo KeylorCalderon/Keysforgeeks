@@ -6,7 +6,6 @@
 <html lang="en">
 
 
-
 <?php
         include "includes/Encabezado.php";
 ?>
@@ -15,25 +14,19 @@
 <body>
 <?php
 	require_once 'lib/nusoap.php';
-	$client = new nusoap_client("https://localhost/WSServer/registrar.php?wsdl");
-	echo "Iniciando prueba</h3>";
-		$name = 'Keysforgeeks';
-		$location = 'Cartago, Costa Rica';
+	$client = new nusoap_client("http://localhost/WSServer/registrar.php?wsdl");
+		$name = 'EmpresaPruebaWeb';
+		$location = 'Calle 11, Avenida 12., 3 km norte del parque central., Provincia de Cartago, Cartago, 30101';
 		$represent = 'Keylor Calderón';
-		$email = 'keycal76@gmail.com';
-
+		$email = 'elison1606@gmail.com';
 		$parametros = array ( 'nombre' => "$name",
 				      'ubicacion' => "$location",
 				      'representante' => "$represent",
 				      'correo' => "$email");
-
 		$response = $client->call('RegistrarEmpresa', $parametros);
 		if (empty($response))
 			echo "No se recibió respuesta del servicio</h3>";
 		else {
-			echo "Respuesta recibida</h3>";
-			foreach ($response as $msg)
-				echo "<p>--&gt;$msg&lt;--</p>";
             ?>
             <form class="form-inline" action="" method="POST">
                 <div class="form-group">
@@ -45,48 +38,28 @@
 
                 <?php
                 require_once 'lib/nusoap.php';
-                $client = new nusoap_client("https://localhost/WSServer/registrar.php?wsdl");
+                $client = new nusoap_client("http://localhost/WSServer/registrar.php?wsdl");
                 if(isset($_POST['llave'])) {
-                    $empresa = 'No sé';
+                    $empresa = 'EmpresaPruebaWeb';
                     $llave = $_POST['llave'];
-                    $tienda = 'No sé 2';
-                    $ubicacion = 'Mi casa';
+                    $tienda = 'Keysforgeeks';
+                    $ubicacion = 'Calle 15, Avenida 14., 1 km Sur de la Basílica de los Ángeles., Provincia de Cartago, Cartago, 30101';
     
                     $parametros = array ( 'empresa' => "$empresa",
                                   'llave' => "$llave",
                                   'tienda' => "$tienda",
                                   'ubicacion' => "$ubicacion");
-    
                     $response = $client->call('RegistrarTienda', $parametros);
                     if (empty($response))
                         echo "No se recibió respuesta del servicio</h3>";
-                    else {
-                        echo "Respuesta recibida</h3>";
-                        foreach ($response as $msg)
-                            echo "<p>--&gt;$msg&lt;--</p>";
+                    else{
+                        echo "<script>location.href='index.php';</script>";
                     }
-    
-                    echo '<h2>Solicitud</h2>';
-                    echo '<pre>' . htmlspecialchars($client->request, ENT_QUOTES) . '</pre>';				
-                    echo '<h2>Respuesta</h2>';
-                    echo '<pre>' . htmlspecialchars($client->response, ENT_QUOTES) . '</pre>';
-                    echo '<h2>Detalle</h2>';
-                    echo '<pre>' . htmlspecialchars($client->debug_str, ENT_QUOTES) . '</pre>';
                 }
 		}
-
-		echo '<h2>Solicitud</h2>';
-		echo '<pre>' . htmlspecialchars($client->request, ENT_QUOTES) . '</pre>';				
-		echo '<h2>Respuesta</h2>';
-		echo '<pre>' . htmlspecialchars($client->response, ENT_QUOTES) . '</pre>';
-		echo '<h2>Detalle</h2>';
-		echo '<pre>' . htmlspecialchars($client->debug_str, ENT_QUOTES) . '</pre>';
-
 ?>
-
-    <?php
-        include "includes/PiePagina.php";
-    ?>
+<?php
+    include "includes/PiePagina.php";
+?>
 </body>
-
 </html>
