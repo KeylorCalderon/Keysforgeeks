@@ -10,8 +10,6 @@
 <?php
         include "includes/Encabezado.php";
 ?>
-
-
 <body>
     <div class="wrapper">        
         <main>

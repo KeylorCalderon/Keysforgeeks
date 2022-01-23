@@ -75,6 +75,7 @@
 		}
         if(isset($_POST['llaveTienda'])) {
             $llave = $_POST['submit2'];
+            $llaveT = $_POST['llaveTienda'];
             $conn=conectar();
             $sql="UPDATE Llave SET llaveTienda='$llaveT' WHERE llaveEmpresa='$llave'";
             mysqli_query($conn, $sql);
