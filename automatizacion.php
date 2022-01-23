@@ -80,8 +80,9 @@
             $sql="UPDATE Llave SET llaveTienda='$llaveT' WHERE llaveEmpresa='$llave'";
             mysqli_query($conn, $sql);
             mysqli_close($conn);
-            echo "<script>location.href='facturasAutomaticas.php';</script>";
+            echo "<script>location.href='index.php';</script>";
         }
+
 ?>
 
 <?php

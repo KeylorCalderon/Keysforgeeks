@@ -17,6 +17,7 @@
                 <a href="catalogo-productos-servicios.php">Catalogo de productos</a>
                 <a href="ReiniciarBD.php">Reiniciar la Base de Datos</a>
                 <a href="automatizacion.php">Registrar empresa</a>
+                <a href="facturasAutomaticas.php">Generación de facturas</a>
             </nav> 
         </main>
 

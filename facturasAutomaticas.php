@@ -22,8 +22,8 @@
         $result=mysqli_query($conn, "SELECT * FROM Llave ORDER BY ID DESC LIMIT 1");  
         $row=mysqli_fetch_assoc($result);
 
-		$empresa = $_POST['EmpresaPruebaWeb'];
-		$tienda = $_POST['Keysforgeeks'];
+		$empresa ='EmpresaPruebaWeb';
+		$tienda = 'Keysforgeeks';
 		$llave = $row['llaveTienda'];
 		$numero = $ultimo_id;
 				
@@ -52,8 +52,8 @@
 
             $codigo = mysqli_insert_id($conn);
 			$cantidad = rand(1, 5);
-			
-				
+            $descripcion = substr ( $descripcion, 0, 100);
+
 			$item = array (	'codigo' => "$codigo",
 							'descripcion' => "$descripcion",
 							'cantidad' => "$cantidad",
@@ -84,7 +84,9 @@
 
 		$response = $client->call('RegistrarVenta', $parametros);
 
+	    
         if($estado==0){
+            $client2 = new nusoap_client("http://localhost/WSServer/facturar.php?wsdl", array('soap_version' => SOAP_1_1));
             $eleccioMotivo=rand(1,3);
             $motivo='';
             switch ($eleccioMotivo) {
@@ -92,24 +94,23 @@
                     $motivo = 'Encontré el mismo juego más barato en otro lugar';
                     break;
                 case 2:
-                    $motivo = $_POST['El producto me llegó dañado'];
+                    $motivo = 'El producto me llegó dañado';
                     break;
                 case 3:
-                    $motivo = $_POST['Prefiero esperar a las ofertas'];
+                    $motivo = 'Prefiero esperar a las ofertas';
                     break;
             }
 
 			$parametros2 = array ( 'empresa' => "$empresa",
 						  'tienda' => "$tienda",
 						  'llave' => "$llave",
-						  'factura' => $factura,
+						  'factura' => $numero,
 						  'motivo' => "$motivo");
 
-			$response2 = $client->call('CancelarVenta', $parametros2);
+			$response2 = $client2->call('CancelarVenta', $parametros2);
+
         }
     }
-
-    
     mysqli_close($conn);
     echo "<script>location.href='index.php';</script>";
 ?>
