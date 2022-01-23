@@ -8,27 +8,104 @@
             $estado=0;
         }
         $carrito=rand(1, 3);
-        $subtotal=rand(10000, 300000);
-        $fecha=date("Y-m-d", mt_rand(1641016800, 1643522400));
-        
+        $fecha1=date("Y-m-d", mt_rand(1641016800, 1643522400));
+
         $sql = "INSERT INTO Factura(carritoID, fecha, subtotal, estado)
-        VALUES  ('$carrito','$fecha', '$subtotal', '$estado');";
+        VALUES  ('$carrito','$fecha1', 0, '$estado');";
         $conn->query($sql);
 
         $ultimo_id = mysqli_insert_id($conn);
 
+        require_once 'lib/nusoap.php';
+		$client = new nusoap_client("http://localhost/WSServer/facturar.php?wsdl", array('soap_version' => SOAP_1_1));
+			
+        $result=mysqli_query($conn, "SELECT * FROM Llave ORDER BY ID DESC LIMIT 1");  
+        $row=mysqli_fetch_assoc($result);
+
+		$empresa = $_POST['EmpresaPruebaWeb'];
+		$tienda = $_POST['Keysforgeeks'];
+		$llave = $row['llaveTienda'];
+		$numero = $ultimo_id;
+				
+		$items = array ();
+		$subtotal = 0;
+		$impuestos = 0;
+
         $cantItems=rand(3, 15);
         for ($j = 1; $j<=$cantItems; $j++) {
-            $precio=rand(4000, 60000);
 
             $videojuegoID=rand(1, 22);
             $plataformaResult=mysqli_query($conn, "SELECT * FROM Videojuego WHERE ID='$videojuegoID'");
             $rowP=mysqli_fetch_assoc($plataformaResult);
             $videojuego=$rowP['nombre'];
+            $unitario = $rowP['precio'];
+			$categoriaID = $rowP['plataformaID'];
+            $descripcion = $rowP['descripcion'];
+
+            $plataformaResultado=mysqli_query($conn, "SELECT * FROM Plataforma WHERE ID='$categoriaID'");
+            $rowP=mysqli_fetch_assoc($plataformaResultado);
+            $categoria=$rowP['nombre'];
 
             $sql = "INSERT INTO FacturaDetalle(facturaID, nombre, precio)
-            VALUES  ('$ultimo_id','$videojuego', '$precio');";
+            VALUES  ('$ultimo_id','$videojuego', '$unitario');";
             $conn->query($sql);
+
+            $codigo = mysqli_insert_id($conn);
+			$cantidad = rand(1, 5);
+			
+				
+			$item = array (	'codigo' => "$codigo",
+							'descripcion' => "$descripcion",
+							'cantidad' => "$cantidad",
+							'unitario' => "$unitario",
+							'categoria' => "$categoria");
+			array_push ($items, $item);
+					
+			$subtotal += $unitario * $cantidad;
+        }
+        $sql="UPDATE Factura SET subtotal='$subtotal' WHERE ID='$ultimo_id'";
+        mysqli_query($conn, $sql);
+
+        $fecha = date ("Ymd");
+		$hora = date ("Hi");
+		$total = $subtotal + $impuestos;
+				
+		$factura = array (	'numero' => "$numero",
+							'fecha' => "$fecha",
+							'hora' => "$hora",
+							'subtotal' => "$subtotal",
+							'total' => "$total",
+							'items' => $items);
+
+		$parametros = array ( 'empresa' => "$empresa",
+					  'tienda' => "$tienda",
+					  'llave' => "$llave",
+					  'factura' => $factura);
+
+		$response = $client->call('RegistrarVenta', $parametros);
+
+        if($estado==0){
+            $eleccioMotivo=rand(1,3);
+            $motivo='';
+            switch ($eleccioMotivo) {
+                case 1:
+                    $motivo = 'Encontré el mismo juego más barato en otro lugar';
+                    break;
+                case 2:
+                    $motivo = $_POST['El producto me llegó dañado'];
+                    break;
+                case 3:
+                    $motivo = $_POST['Prefiero esperar a las ofertas'];
+                    break;
+            }
+
+			$parametros2 = array ( 'empresa' => "$empresa",
+						  'tienda' => "$tienda",
+						  'llave' => "$llave",
+						  'factura' => $factura,
+						  'motivo' => "$motivo");
+
+			$response2 = $client->call('CancelarVenta', $parametros2);
         }
     }
 

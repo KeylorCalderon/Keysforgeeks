@@ -138,7 +138,7 @@ function crearBD($conn){
         carritoID INT,
         fecha DATE,
         subtotal FLOAT,
-        estado BIT,
+        estado INT,
         FOREIGN KEY (carritoID) REFERENCES Carrito (ID));" ;
         $conn->query($sql);
 
