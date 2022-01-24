@@ -13,8 +13,7 @@
 
 <body>
 <?php
-	require_once 'lib/nusoap.php';
-	$client = new nusoap_client("http://localhost/WSServer/registrar.php?wsdl");
+        include "includes/ServiceRegistro.php";
 		$name = 'EmpresaPruebaWeb';
 		$location = 'Calle 11, Avenida 12., 3 km norte del parque central., Provincia de Cartago, Cartago, 30101';
 		$represent = 'Keylor Calderón';

@@ -32,8 +32,7 @@
                                                     )  AS precios
                                                     WHERE CXV.ID=precios.ID AND CXV.videojuegoID=V.ID AND CXV.carritoID='$carritoID'
                                                     ORDER BY ID ASC");     
-            require_once 'lib/nusoap.php';
-            $client = new nusoap_client("http://localhost/WSServer/facturar.php?wsdl", array('soap_version' => SOAP_1_1));
+            include "includes/ServiceCrearFactura.php";
             
             $resultF=mysqli_query($conn, "SELECT * FROM Llave ORDER BY ID DESC LIMIT 1");  
             $rowF=mysqli_fetch_assoc($resultF);

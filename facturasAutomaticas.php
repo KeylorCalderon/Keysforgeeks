@@ -16,8 +16,7 @@
 
         $ultimo_id = mysqli_insert_id($conn);
 
-        require_once 'lib/nusoap.php';
-		$client = new nusoap_client("http://localhost/WSServer/facturar.php?wsdl", array('soap_version' => SOAP_1_1));
+        include "includes/ServiceCrearFactura.php";
 			
         $result=mysqli_query($conn, "SELECT * FROM Llave ORDER BY ID DESC LIMIT 1");  
         $row=mysqli_fetch_assoc($result);
@@ -83,7 +82,7 @@
 
 	    
         if($estado==0){
-            $client2 = new nusoap_client("http://localhost/WSServer/facturar.php?wsdl", array('soap_version' => SOAP_1_1));
+            include "includes/ServiceCancelarFactura.php";
             $eleccioMotivo=rand(1,3);
             $motivo='';
             switch ($eleccioMotivo) {

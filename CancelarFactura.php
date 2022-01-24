@@ -12,7 +12,7 @@
         mysqli_query($conn, $sql);
 
         require_once 'lib/nusoap.php';
-        $client2 = new nusoap_client("http://localhost/WSServer/facturar.php?wsdl", array('soap_version' => SOAP_1_1));
+        include "includes/ServiceCancelarFactura.php";
         $motivo=$_POST['motivo'];
 
         $resultB=mysqli_query($conn, "SELECT * FROM Llave ORDER BY ID DESC LIMIT 1");  
