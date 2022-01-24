@@ -56,6 +56,7 @@
                 $descripcion = substr ( $descripcion, 0, 100);
                 $sql="INSERT INTO FacturaDetalle(facturaID, nombre, precio) VALUES ('$ultimo_id', '$nombre', '$precio')";
                 mysqli_query($conn, $sql);
+                $codigo = mysqli_insert_id($conn);
 
                 $resultA=mysqli_query($conn, "SELECT * 
                                               FROM Descuento D
@@ -72,7 +73,6 @@
                     }
                 }
 
-                $codigo = mysqli_insert_id($conn);
                 $cantidad = 1;
                 $item = array (	'codigo' => "$codigo",
 				    			'descripcion' => "$descripcion",
