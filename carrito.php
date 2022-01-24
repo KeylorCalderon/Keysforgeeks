@@ -58,6 +58,7 @@
                         echo "<div class='text-fact-carrito'><a href='facturacion.php?ID=$IDCarrito' class='btn-carrito'>
                                 Finalizar compra
                               </a></div>";
+                        
                 }
             ?>
             </div>
