@@ -20,6 +20,7 @@
                     </h1>
                     <a href='GestionarProductos.php'>Gestionar productos</a>
                     <a href='GestionarDescuentos.php'>Gestionar descuentos</a>
+                    <a href='GraficosFacturas.php'>Ver facturas</a>
                     <a href='Logout.php'>Cerrar sesión</a>";
             }
             else{
