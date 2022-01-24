@@ -14,7 +14,7 @@
             mysqli_query($conn, $sql);
             $ultimo_id = mysqli_insert_id($conn);
 
-            $result=mysqli_query($conn, "SELECT CXV.ID, V.nombre, precios.precio, V.descripcion
+            $result=mysqli_query($conn, "SELECT CXV.ID, V.ID AS parche, V.nombre, precios.precio, V.descripcion
                                                     FROM CarritoXVideojuego CXV, Videojuego V,(
                                                         SELECT CXV.ID, (V.precio-(V.precio*D.descuento/100)) AS precio
                                                         FROM CarritoXVideojuego CXV, Videojuego V, Descuento D
@@ -50,10 +50,27 @@
             while($row=mysqli_fetch_assoc($result)){
                 $nombre=$row['nombre'];
                 $precio=$row['precio'];
+                $parche=$row['parche'];
+
                 $descripcion = $row['descripcion'];
                 $descripcion = substr ( $descripcion, 0, 100);
                 $sql="INSERT INTO FacturaDetalle(facturaID, nombre, precio) VALUES ('$ultimo_id', '$nombre', '$precio')";
                 mysqli_query($conn, $sql);
+
+                $resultA=mysqli_query($conn, "SELECT * 
+                                              FROM Descuento D
+                                              WHERE D.videojuegoID='$parche';"); 
+                $categoria=1;
+                if($rowA=mysqli_fetch_assoc($resultA)){
+                    $cantDescuento=$rowA['descuento'];
+                    if($cantDescuento<=5.0){
+                        $categoria=2;
+                    }else if($cantDescuento>5.0 && $cantDescuento<=20.0){
+                        $categoria=3;
+                    }else if($cantDescuento>20.0){
+                        $categoria=4;
+                    }
+                }
 
                 $codigo = mysqli_insert_id($conn);
                 $cantidad = 1;
@@ -96,7 +113,7 @@
             
 
             mysqli_close($conn);
-            echo "<script>location.href='carrito.php';</script>";
+            echo "<script>location.href='catalogo-productos-servicios.php';</script>";
             //header("Location: carrito.php");
         } catch (Exception $e) {
             echo 'Error al cargar datos: ',  $e->getMessage(), "\n";
