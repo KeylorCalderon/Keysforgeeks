@@ -14,11 +14,18 @@
         require_once 'lib/nusoap.php';
         $client2 = new nusoap_client("http://localhost/WSServer/facturar.php?wsdl", array('soap_version' => SOAP_1_1));
         $motivo=$_POST['motivo'];
+
+        $resultB=mysqli_query($conn, "SELECT * FROM Llave ORDER BY ID DESC LIMIT 1");  
+        $rowB=mysqli_fetch_assoc($resultB);
+
+		$empresa ='EmpresaPruebaWeb';
+		$tienda = 'Keysforgeeks';
+		$llave = $rowB['llaveTienda'];
         
         $parametros2 = array (  'empresa' => "$empresa",
                                 'tienda' => "$tienda",
                                 'llave' => "$llave",
-                                'factura' => $numero,
+                                'factura' => $facturaID,
                                 'motivo' => "$motivo");
 
         $response2 = $client2->call('CancelarVenta', $parametros2);
