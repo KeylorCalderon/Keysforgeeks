@@ -17,7 +17,7 @@
                 <?php
                     $ID=@$_SESSION['ID'];
                     $conn=conectar();
-                    $result=mysqli_query($conn,"SELECT F.ID, F.fecha, F.subtotal
+                    $result=mysqli_query($conn,"SELECT F.ID, F.fecha, F.subtotal, F.estado
                                                 FROM Factura F
                                                 WHERE F.carritoID='$ID'");           
                     echo "<div class= 'carrito'>";
@@ -25,7 +25,17 @@
                         $facturaID=$row['ID'];
                         $fecha=$row['fecha'];
                         $subtotal=$row['subtotal'];
-                            echo "<h2 class='subtitulos'>Fecha: $fecha</h2>
+                            echo "<h2 class='subtitulos'>Fecha: $fecha";
+
+                            $estado = $row['estado'];
+                            if($estado==1){
+                                echo "<form action='CancelarFactura.php?ID=$facturaID' method='post'>
+                                        <button type='submit' class='botonProducto' name='facturaID' id='$facturaID'>Cancelar</button>
+                                    </form>";
+                            }else{
+                                echo "<div>CANCELADA</div>";
+                            }
+                            echo "</h2>
                             <div class= 'cont-compras'>";  
                             $result2=mysqli_query($conn,"SELECT FD.nombre, FD.precio
                                                         FROM FacturaDetalle FD
