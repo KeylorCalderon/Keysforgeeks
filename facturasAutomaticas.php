@@ -41,11 +41,8 @@
             $unitario = $rowP['precio'];
 			$categoriaID = $rowP['plataformaID'];
             $descripcion = $rowP['descripcion'];
-
-            $plataformaResultado=mysqli_query($conn, "SELECT * FROM Plataforma WHERE ID='$categoriaID'");
-            $rowP=mysqli_fetch_assoc($plataformaResultado);
-            $categoria=$rowP['nombre'];
-
+            $categoria= 1;
+            
             $sql = "INSERT INTO FacturaDetalle(facturaID, nombre, precio)
             VALUES  ('$ultimo_id','$videojuego', '$unitario');";
             $conn->query($sql);

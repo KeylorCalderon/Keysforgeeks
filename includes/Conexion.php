@@ -8,10 +8,10 @@ function conectar(){
     
     $servername = "localhost";
     $database = "keysforgeeks_db";
-    $username = "root";
-    $password = "";
-    //$username = "usuario";
-    //$password = "1234";
+    //$username = "root";
+    //$password = "";
+    $username = "usuario";
+    $password = "1234";
     //$username = "keysforgeeks_usuario";
     //$password = "4J=RLCuxM+]q";
 
@@ -28,6 +28,6 @@ function conectar(){
     }
     */
 
-    return $conn;
+    return $conn;   
 }
 ?>
