@@ -14,7 +14,7 @@
             mysqli_query($conn, $sql);
             $ultimo_id = mysqli_insert_id($conn);
 
-            $result=mysqli_query($conn, "SELECT CXV.ID, V.nombre, precios.precio 
+            $result=mysqli_query($conn, "SELECT CXV.ID, V.nombre, precios.precio, V.descripcion
                                                     FROM CarritoXVideojuego CXV, Videojuego V,(
                                                         SELECT CXV.ID, (V.precio-(V.precio*D.descuento/100)) AS precio
                                                         FROM CarritoXVideojuego CXV, Videojuego V, Descuento D
@@ -31,12 +31,38 @@
                                                         )
                                                     )  AS precios
                                                     WHERE CXV.ID=precios.ID AND CXV.videojuegoID=V.ID AND CXV.carritoID='$carritoID'
-                                                    ORDER BY ID ASC");                     
+                                                    ORDER BY ID ASC");     
+            require_once 'lib/nusoap.php';
+            $client = new nusoap_client("http://localhost/WSServer/facturar.php?wsdl", array('soap_version' => SOAP_1_1));
+            
+            $resultF=mysqli_query($conn, "SELECT * FROM Llave ORDER BY ID DESC LIMIT 1");  
+            $rowF=mysqli_fetch_assoc($resultF);
+
+            $empresa ='EmpresaPruebaWeb';
+            $tienda = 'Keysforgeeks';
+            $llave = $rowF['llaveTienda'];
+            $numero = $ultimo_id;
+
+            $items = array ();
+            $subtotal = 0;
+            $impuestos = 1.11;
+            
             while($row=mysqli_fetch_assoc($result)){
-                  $nombre=$row['nombre'];
-                  $precio=$row['precio'];
-                  $sql="INSERT INTO FacturaDetalle(facturaID, nombre, precio) VALUES ('$ultimo_id', '$nombre', '$precio')";
-                  mysqli_query($conn, $sql);
+                $nombre=$row['nombre'];
+                $precio=$row['precio'];
+                $descripcion = $row['descripcion'];
+                $sql="INSERT INTO FacturaDetalle(facturaID, nombre, precio) VALUES ('$ultimo_id', '$nombre', '$precio')";
+                mysqli_query($conn, $sql);
+
+                $codigo = mysqli_insert_id($conn);
+                $cantidad = 1;
+                $item = array (	'codigo' => "$codigo",
+				    			'descripcion' => "$descripcion",
+					    		'cantidad' => "$cantidad",
+						    	'unitario' => "$precio",
+							    'categoria' => "$categoria");
+			    array_push ($items, $item);
+                $subtotal += $precio * $cantidad;
             }
             $result=mysqli_query($conn, "SELECT SUM(FD.precio) AS Total FROM FacturaDetalle FD WHERE FD.facturaID='$ultimo_id'");  
             $row=mysqli_fetch_assoc($result);
@@ -47,6 +73,25 @@
 
             $sql="DELETE FROM CarritoXVideojuego WHERE carritoID='$carritoID'";
             mysqli_query($conn, $sql);
+
+            $fecha = date ("Ymd");
+            $hora = date ("Hi");
+            $total = $subtotal + $impuestos;
+                    
+            $factura = array (	'numero' => "$numero",
+                                'fecha' => "$fecha",
+                                'hora' => "$hora",
+                                'subtotal' => "$subtotal",
+                                'total' => "$total",
+                                'items' => $items);
+
+            $parametros = array ( 'empresa' => "$empresa",
+                        'tienda' => "$tienda",
+                        'llave' => "$llave",
+                        'factura' => $factura);
+
+            $response = $client->call('RegistrarVenta', $parametros);
+
             
 
             mysqli_close($conn);
