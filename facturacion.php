@@ -51,6 +51,7 @@
                 $nombre=$row['nombre'];
                 $precio=$row['precio'];
                 $descripcion = $row['descripcion'];
+                $descripcion = substr ( $descripcion, 0, 100);
                 $sql="INSERT INTO FacturaDetalle(facturaID, nombre, precio) VALUES ('$ultimo_id', '$nombre', '$precio')";
                 mysqli_query($conn, $sql);
 
