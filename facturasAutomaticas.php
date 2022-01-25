@@ -86,14 +86,13 @@
                      VALUES  ('$ultimo_id', 'No se recibió respuesta del servicio');";
             mysqli_query($conn, $sqlAux);
         } else {
-            //echo "<h3>Respuesta recibida</h3>";
-            $AGuardar="Respuesta recibida ";
+            echo "<h3>Respuesta recibida</h3>";
             foreach ($response as $msg){
-                $AGuardar.=$msg;
-            }
-            $sqlAux="INSERT INTO FacturaMensajes(facturaID, mensaje)
-                     VALUES  ('$ultimo_id', '$AGuardar');";
-            mysqli_query($conn, $sqlAux);
+                $msg=utf8_decode($msg);
+                $sqlAux="INSERT INTO FacturaMensajes(facturaID, mensaje)
+                     VALUES  ('$ultimo_id', '$msg');";
+                mysqli_query($conn, $sqlAux);
+            }        
         }
 
 	    
@@ -124,5 +123,5 @@
         }
     }
     mysqli_close($conn);
-    echo "<script>location.href='index.php';</script>";
+    //echo "<script>location.href='index.php';</script>";
 ?>

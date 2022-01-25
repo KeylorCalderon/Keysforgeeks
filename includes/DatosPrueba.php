@@ -173,7 +173,7 @@ function crearBD($conn){
 
         $sql = "CREATE TABLE FacturaMensajes(ID INT PRIMARY KEY AUTO_INCREMENT,
         facturaID INT,
-        mensaje VARCHAR(500),
+        mensaje VARCHAR(1000),
         FOREIGN KEY (facturaID) REFERENCES Factura (ID));";
         $conn->query($sql);
 
