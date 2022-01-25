@@ -75,8 +75,12 @@
                         echo "<p>● Precio: ₡ $precio</p>"; 
                                           
                     }
-                    echo "<p class = 'text-fact-carrito'>Total: ₡ $subtotal</p></div>";      
+                    echo "<p class = 'text-fact-carrito'>Total: ₡ $subtotal</p></div>"; 
+                    echo "<form class='formulario' method='post' action='verMensajes.php?ID=$facturaID' name='verDetalle' id='verDetalle'>
+                              <button type='submit' class='botonLogin' name='verEnDetalle' value='verEnDetalle'>Ver facturas</button>
+                          </form>";     
                 }
+
                 echo "</div>";
                 mysqli_close($conn);
             ?>

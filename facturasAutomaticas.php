@@ -125,7 +125,7 @@
                          VALUES  ('$ultimo_id', 'No se recibió respuesta del servicio');";
                 mysqli_query($conn, $sqlAux2);
             } else {
-                echo "<h3>Respuesta recibida</h3>";
+                //echo "<h3>Respuesta recibida</h3>";
                 foreach ($response2 as $msg){
                     $msg=utf8_decode($msg);
                     $sqlAux2="INSERT INTO FacturaMensajes(facturaID, mensaje)
@@ -136,5 +136,5 @@
         }
     }
     mysqli_close($conn);
-    //echo "<script>location.href='index.php';</script>";
+    echo "<script>location.href='index.php';</script>";
 ?>
