@@ -56,20 +56,22 @@
      </head>
      <body>
 
-     <div class="wrapper">
-        <div class="cont-seccion">   
-            <div class="contenedores Transacciones">
-                <div class="selecionador">
-                    <form class = "formulario" action="">
-                        <input type="date" class="input-date">
-                    </form>
-                    <form class = "formulario" action="">
-                        <input type="date" class="input-date">
-                    </form>
-                </div>
-            </div>  
-            <div id="chartContainer" style="height: 100%; width: 100%;"></div>
-        </div>      
+    <div class="wrapper">
+        <div class="administrativo">
+            <div class="cont-seccion">   
+                <div class="contenedores Transacciones">
+                    <div class="selecionador">
+                        <form class = "formulario" action="">
+                            <input type="date" class="input-date">
+                        </form>
+                        <form class = "formulario" action="">
+                            <input type="date" class="input-date">
+                        </form>
+                    </div>
+                </div>  
+                <div id="chartContainer" style="height: 100%; width: 100%;"></div>
+            </div>      
+        </div> 
     </div>  
 
     <?php

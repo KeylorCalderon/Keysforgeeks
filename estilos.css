@@ -643,7 +643,7 @@ textarea.textarea-descripcion{
 }
 
 .selecionador{
-    margin: 40px;
+    margin: 70px;
     display: flex;
     flex-direction: row;
 }
@@ -655,8 +655,8 @@ textarea.textarea-descripcion{
     border-radius: 5px;
     border-color: transparent;
     color: #000;
-    width: 300px;
-    height: 30px;
+    width: 120px;
+    height: 14px;
 }
 
 
