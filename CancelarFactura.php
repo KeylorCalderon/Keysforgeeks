@@ -29,6 +29,20 @@
                                 'motivo' => "$motivo");
 
         $response2 = $client2->call('CancelarVenta', $parametros2);
+        if (empty($response2)) {
+          //echo "No se recibió respuesta del servicio</h3>";
+          $sqlAux2="INSERT INTO FacturaMensajes(facturaID, mensaje)
+                   VALUES  ('$facturaID', 'No se recibió respuesta del servicio');";
+          mysqli_query($conn, $sqlAux2);
+        } else {
+            echo "<h3>Respuesta recibida</h3>";
+            foreach ($response2 as $msg){
+                $msg=utf8_decode($msg);
+                $sqlAux2="INSERT INTO FacturaMensajes(facturaID, mensaje)
+                    VALUES  ('$facturaID', '$msg');";
+                mysqli_query($conn, $sqlAux2);
+            }        
+        }
 
         echo "<script>location.href='ComprasAnteriores.php';</script>";
     }
