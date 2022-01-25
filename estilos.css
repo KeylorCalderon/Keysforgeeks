@@ -644,20 +644,20 @@ textarea.textarea-descripcion{
 }
 
 .selecionador{
-    margin: 70px;
+    margin: 10px;
     display: flex;
     flex-direction: row;
 }
 
 .input-date{
-    margin-left: 10px;
+    margin-left: 40px;
     padding: 5px 32px 5px 10px;
     font-size: 12px;
     border-radius: 5px;
     border-color: transparent;
     color: #000;
-    width: 120px;
-    height: 14px;
+    width: 200px;
+    height: 30px;
 }
 
 
@@ -984,5 +984,3 @@ thead{
     color: #000;
     width: 250px;
 }
-
-

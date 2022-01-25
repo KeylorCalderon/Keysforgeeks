@@ -22,6 +22,7 @@
                             </select>
                             <button type="submit" class="botonLogin" name="buscar" value="buscar">Buscar</button>
                         </form>
+                        
                     </div>
                 </div>  
                 <div id="chartContainer" style="height: 100%; width: 100%;"></div>
