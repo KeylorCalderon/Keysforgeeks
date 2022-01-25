@@ -27,7 +27,7 @@
     ?>
      <!DOCTYPE HTML>
      <html>
-     <head>  
+     <head> 
      <script>
      window.onload = function () {
       
@@ -43,7 +43,7 @@
          },
          data: [{
              type: "column", //para cambiar el tipo: bar, line, area, pie, etc
-             //indexLabel: "{y}", //Muestra el valor de "y" en todos los puntos
+             indexLabel: "{y}", //Muestra el valor de "y" en todos los puntos
              indexLabelFontColor: "#5A5757",
              indexLabelPlacement: "outside",   
              dataPoints: <?php echo json_encode($dataPoints, JSON_NUMERIC_CHECK); ?>
@@ -55,7 +55,22 @@
      </script>
      </head>
      <body>
-     <div id="chartContainer" style="height: 100%; width: 100%;"></div>
+
+     <div class="wrapper">
+        <div class="cont-seccion">   
+            <div class="contenedores Transacciones">
+                <div class="selecionador">
+                    <form class = "formulario" action="">
+                        <input type="date" class="input-date">
+                    </form>
+                    <form class = "formulario" action="">
+                        <input type="date" class="input-date">
+                    </form>
+                </div>
+            </div>  
+            <div id="chartContainer" style="height: 100%; width: 100%;"></div>
+        </div>      
+    </div>  
 
     <?php
         include "includes/PiePagina.php";

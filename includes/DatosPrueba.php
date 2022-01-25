@@ -306,7 +306,7 @@ function cargarDatos($conn){
                 (3,15);";
         $conn->query($sql);
 
-        $sql = "INSERT INTO Factura(carritoID, fecha, subtotal, estado)
+        /*$sql = "INSERT INTO Factura(carritoID, fecha, subtotal, estado)
         VALUES  (1,'2021-09-21', 78302.50, 1),
                 (3,'2021-05-11', 312302.50, 1),
                 (3,'2021-03-23', 43302.50, 1),
@@ -329,7 +329,7 @@ function cargarDatos($conn){
                 (5,'Hollow Knight', 21302.50),
                 (2,'Azul', 302.50),
                 (2,'Celeste', 5302.50);";
-        $conn->query($sql);
+        $conn->query($sql);*/
 
         $sql = "INSERT INTO Preguntas(usuarioID, videojuegoID, comentario, fecha, estrellas)
         VALUES  (1,1,'Una gran obra de arte, es increíble como lograron que una fórmula que parecía gastada resurgiera, llena de momento divertidos y un tono que cautiva a cualquiera.', '2021-05-03',5),
