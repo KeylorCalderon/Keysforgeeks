@@ -80,6 +80,22 @@
 
 		$response = $client->call('RegistrarVenta', $parametros);
 
+        if (empty($response)) {
+            //echo "No se recibió respuesta del servicio</h3>";
+            $sqlAux="INSERT INTO FacturaMensajes(facturaID, mensaje)
+                     VALUES  ('$ultimo_id', 'No se recibió respuesta del servicio');";
+            mysqli_query($conn, $sqlAux);
+        } else {
+            //echo "<h3>Respuesta recibida</h3>";
+            $AGuardar="Respuesta recibida ";
+            foreach ($response as $msg){
+                $AGuardar.=$msg;
+            }
+            $sqlAux="INSERT INTO FacturaMensajes(facturaID, mensaje)
+                     VALUES  ('$ultimo_id', '$AGuardar');";
+            mysqli_query($conn, $sqlAux);
+        }
+
 	    
         if($estado==0){
             include "includes/ServiceCancelarFactura.php";

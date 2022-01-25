@@ -2,6 +2,9 @@
 
 function borrarBD($conn){
     try {
+        $sql = "DROP TABLE FacturaMensajes; ";
+        $conn->query($sql);
+
         $sql = "DROP TABLE Respuestas; ";
         $conn->query($sql);
 
@@ -166,6 +169,12 @@ function crearBD($conn){
         fecha DATE,
         FOREIGN KEY (preguntaID) REFERENCES Preguntas (ID),
         FOREIGN KEY (usuarioID) REFERENCES Usuario (ID));" ;
+        $conn->query($sql);
+
+        $sql = "CREATE TABLE FacturaMensajes(ID INT PRIMARY KEY AUTO_INCREMENT,
+        facturaID INT,
+        mensaje VARCHAR(500),
+        FOREIGN KEY (facturaID) REFERENCES Factura (ID));";
         $conn->query($sql);
 
         echo 'Creación de tablas éxitosa', "\n";
