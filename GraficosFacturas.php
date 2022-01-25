@@ -67,6 +67,7 @@
                         <form class = "formulario" action="">
                             <input type="date" class="input-date">
                         </form>
+                        
                     </div>
                 </div>  
                 <div id="chartContainer" style="height: 100%; width: 100%;"></div>
