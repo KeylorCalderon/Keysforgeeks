@@ -36,8 +36,6 @@
             </form>
 
                 <?php
-                require_once 'lib/nusoap.php';
-                $client = new nusoap_client("http://localhost/WSServer/registrar.php?wsdl");
                 if(isset($_POST['llave'])) {
                     $empresa = 'EmpresaPruebaWeb';
                     $llave = $_POST['llave'];
