@@ -1,5 +1,7 @@
 # Keysforgeeks E-commerce Platform (Legacy PHP System)
 
+<img src="/img/logo.jpg" width="800">
+
 Keysforgeeks is a full-stack e-commerce web application built in PHP as an academic project (2022) and later revisited for documentation and portfolio purposes.
 
 The system simulates a real digital marketplace for game keys, including user roles, shopping cart functionality, order management, discount handling, and external billing integration via SOAP services.
