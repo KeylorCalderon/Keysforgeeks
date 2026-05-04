@@ -107,25 +107,25 @@ This was used to simulate real-world invoice processing through a remote/indepen
 
 ### Login
 
-<img src="screenshots/Image1.png" width="250">
+<img src="screenshots/Image1.png" width="500">
 
 ### Product List
 
-<img src="screenshots/Image2.png" width="250">
+<img src="screenshots/Image2.png" width="500">
 
 ### Purchase History
 
-<img src="screenshots/Image3.png" width="250">
+<img src="screenshots/Image3.png" width="500">
 
 ### Edit User Profile
 
-<img src="screenshots/Image4.png" width="250">
+<img src="screenshots/Image4.png" width="500">
 
 ### Product Detail
 
-<img src="screenshots/Image5.png" width="250">
+<img src="screenshots/Image5.png" width="500">
 
-<img src="screenshots/Image6.png" width="250">
+<img src="screenshots/Image6.png" width="500">
 
 ---
 
